@@ -1,7 +1,8 @@
 
 
-	use "$directory/constructed/DiD_convenience.dta", clear
+	use "$directory/constructed/did_convenience.dta", clear
 
+	
 	local quality "correct dr_1 dr_4 re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9"
 	
 
@@ -14,7 +15,7 @@
 						 "Effect" "Std Error" "P-Value" 
 	
 	
-	//3 groups according to wave and trial_assignment
+
   egen group = group(wave type), label
   
   // Put statistics in matrix
@@ -22,13 +23,14 @@
   foreach i in `quality' {
     local row = `row' + 1
 
-    quietly areg `i' d_treatXpost d_treat d_post i.case, a(qutub_id_provider) vce(cluster qutub_id) 
+    quietly areg `i' d_type2_wave wave d_type2 d_type3 d_type3_wave i.case, ///
+	a(qutub_id_provider) vce(cluster qutub_id) 
 
-    mat t2[`row', 7] = _b[d_treatXpost] //Effect
-    mat t2[`row', 8] = _se[d_treatXpost] //Standard Error
-    mat t2[`row', 9] = 2*ttail(e(df_r), abs(_b[d_treatXpost]/_se[d_treatXpost])) //P-value
+    mat t2[`row', 7] = _b[d_type2_wave] //Effect
+    mat t2[`row', 8] = _se[d_type2_wave] //Standard Error
+    mat t2[`row', 9] = 2*ttail(e(df_r), abs(_b[d_type2_wave]/_se[d_type2_wave])) //P-value
   
-	quietly tabstat `i', by(group) save //Mean values of the 4 groups
+	quietly tabstat `i', by(group) save //Mean values of the 3 groups
 
     mat t2[`row',1] = r(Stat1)
     mat t2[`row',2] = r(Stat2)
@@ -57,14 +59,17 @@
   putexcel H6:J6 = "Wave-1" ///
     , merge hcenter font(calibri,13) bold underline
   
-	forest areg (`quality'), t(d_treatXpost) ///
-	controls(i.case d_post d_treat) a(qutub_id_provider) vce(cluster qutub_id) ///
-	bh sort(global) ///
+	forest areg ///
+  (dr_4 dr_1 re_1 re_3 re_4 re_5 ) ///
+  (med_l_any_1 med_k_any_6 med_k_any_9 med_l_any_2) , ///
+  t(d_type2_wave) control(wave d_type2 d_type3 d_type3_wave i.case) ///
+  a(qutub_id_provider) vce(cluster qutub_id) bh b ///
 	graphopts($graph_opts ///
 	xtitle("Convenience Effect", size(medsmall)) ///
-	xlab( -.3 "-30%" -.2 "-20%" -.1 "-10%" 0 "0%" .1"10%" 0.2 "20%" 0.3"30%", labsize(medsmall)) ylab(,labsize(medsmall))) 
+	xlab( -0.75 "-75%" -.5 "-50%" -0.25"25%" 0 "0%" 0.25"25%" .5"50%" 0.75"75%", labsize(medsmall)) ylab(,labsize(medsmall))) 
 	
-	graph export "$directory/outputs/fig2_DiD.eps", replace
+	
+	graph export "$directory/outputs/fig2_did.png", width(1000) replace
 	
 	
 	

@@ -1,0 +1,671 @@
+
+Variable       Obs Unique       Mean        Min       Max  Label
+--------------------------------------------------------------------------------------
+qutub_id      1636    730          .          .         .  ProviderID
+qutub_id_p~r  1636    728          .          .         .  
+qutub_sample  1636      6   5.376528          1         9  Sample Type
+case          1636      4   2.099022          1         4  Case
+trial_assi~t   579      2   .5008636          0         1  AYUSH priority list for ...
+trial_gx       579      2   .0690846          0         1  GX Vouchers
+trial_gx_d~e    50      9          .          .         .  GX Vouchers Date
+trial_notes    332    123          .          .         .  Notes
+trial_trea~t   579      2   .4853195          0         1  Joined PPIA Network
+trial_trea~e   243     32          .          .         .  Network Start Date
+qutub_any_~l  1636      2   .2738386          0         1  Recieved NNL List from PATH
+qutub_apple    635      2   .2362205          0         1  Apple hub walk-in
+qutub_char~e   637      3          .          .         .  charitable_path
+qutub_degree   425     10          .          .         .  Provider degree from PATH
+qutub_dupl~e    67     31   15.59701          1        31  Provider duplicate tag
+qutub_even~g   646      2    .506192          0         1  Timing Assignment
+qutub_freegx    74      1          .          .         .  freegenexpert
+qutub_hub      635      2   .1464567          0         1  PPIA hub walk-in
+qutub_larg~b   635      2   .0771654          0         1  Hub has more than three ...
+qutub_netp~0   637      2   .7174254          0         1  PPIA Provider
+qutub_netw~0  1636      2   .3361858          0         1  Networked for Wave 0
+qutub_nnl      637      2    .188383          0         1  Networked provider at ot...
+qutub_nonn~d   635      2   .2503937          0         1  Provider seen is a non-n...
+qutub_prov~d   455    123          .          .         .  QUTUBID for provider see...
+qutub_pxh      635      2   .5307087          0         1  Networked provider at ne...
+qutub_samp~1  1635      2   .0917431          0         1  Non-PPIA Facility Walk-In
+qutub_samp~2  1635      2   .0568807          0         1  PPIA Hub Walk-In
+qutub_samp~3  1635      2   .2409786          0         1  PPIA Provider Targeted
+qutub_samp~4  1635      2   .3669725          0         1  Non-PPIA AYUSH Trial (KE/L)
+qutub_samp~5  1635      2   .1370031          0         1  Non-PPIA AYUSH (FN/PN)
+qutub_samp~6  1635      2    .106422          0         1  PPIA AYUSH
+qutub_samp~c  1636      6   3.260391          0         5  Analytic Sample
+qutub_timing   646      2   1.493808          1         2  Timing Assignment
+qutub_timi~w   646      2          .          .         .  Timing Assignment
+ce_1          1636      2   .4724939          0         1  Pulse
+ce_2          1631      2   .8503985          0         1  Auscultation
+ce_2a           95      3        1.6          1         3  Provider commented on au...
+ce_3          1635      2   .1284404          0         1  Temperature
+ce_4          1636      2   .3533007          0         1  Throat Exam
+ce_5          1636      2   .2787286          0         1  Blood Pressure
+ce_6          1635      2   .2042813          0         1  Weight
+ce_7          1635      2   .2336391          0         1  Abdomen palpitation
+charitable~i   637      3          .          .         .  charitable_ahi
+checklist     1636    124    .340124          0  .9310345  Checklist %
+checklist_~t  1636     14   .5039963          0         1  Essential History Checkl...
+checklist_n   1636     33   11.06357          0        35  Checklist #
+comments         8      8          .          .         .  Comment
+correct       1636      2   .3789731          0         1  Correct Case Management
+cp_2          1636      1          3          3         3  City ID
+cp_4          1636    730          .          .         .  Facility ID
+cp_5          1485      9   6.486195          2        11  Provider Qualification
+cp_5_ayush    1636      2   .5378973          0         1  AYUSH
+cp_5_mbbs     1636      2   .3288509          0         1  MBBS
+cp_5_other    1636      2   .1320293          0         1  Other Qualification
+cp_5_qual     1636      4   1.944988          0         3  RECODE of cp_5 (Provider...
+cp_5_rmp      1636      2   .0012225          0         1  RMP
+cp_7          1636    728          .          .         .  Provider ID
+cp_9          1633      8   84.78751          3        89  Interviewer ID
+cp_10         1636    113   20233.98      20180     20321  Date
+cp_10_1       1636    127          .          .         .  Visit 1 Date
+cp_10_2        252     93          .          .         .  Visit 2 Date
+cp_10_3         63     50          .          .         .  Visit 3 Date
+cp_10_month   1636      5   20219.12      20179     20301  Month
+cp_10_mont~b  1636      5   20219.12      20179     20301  
+cp_10_raw     1615    122          .          .         .  Date
+cp_12         1636     17   24.23166         11        44  SP ID
+cp_12_1       1634     23          .          .         .  Visit 1 SP ID
+cp_12_2        252     18          .          .         .  Visit 2 SP ID
+cp_12_3         63     16   23.31746         12        44  Visit 3 SP ID
+cp_13         1615    502   15.22223       1.25     22.75  Arrival Time
+cp_13_1       1635    496          .          .         .  Visit 1 Arrival time
+cp_13_2        253    161          .          .         .  Visit 2 Arrival time
+cp_13_3         63     54          .          .         .  Visit 3 Arrival time
+cp_14_1       1619      2   .8443484          0         1  Visit 1 Complete
+cp_14_2        249      2    .746988          0         1  Visit 2 Complete
+cp_14_3         62      1          1          1         1  Visit 3 Complete
+cp_14a_1       249      7   3.859438          1         9  Visit 1 Incomplete Reason
+cp_14a_2        61      6   3.459016          1         9  Visit 2 Incomplete Reason
+cp_14a_3         0      0          .          .         .  Visit 3 Incomplete Reason
+cp_14b_1        37      7          2          0         7  Visit 1 Days until appoi...
+cp_14b_2         2      2         .5          0         1  Visit 2 Days until appoi...
+cp_14b_3         0      0          .          .         .  Visit 3 Days until appoi...
+cp_14c        1633    534          .          .         .  Departure Time
+cp_14d_mm     1628     25   4.920762          0        25  Total time with provider...
+cp_14d_ss     1627     60   27.82483          0        59  Total time with provider...
+cp_15         1636      2   1.001834          1         4  Went to Correct Clinic L...
+cp_16         1418      3   .9541608          0         9  Saw Sampled Provider
+cp_17         1634      3   2.117503          1         3  Provider Age Group
+cp_18         1628      3   .8304668          0         3  Provider Male
+cp_19         1636     31   2.149144          0        63  Patients Waiting on Arrival
+cp_20         1636     26   1.889364          0        48  Patients Waiting on Depa...
+cp_21         1633      2   .6172688          0         1  Provider Has Compounder
+cp_22         1636      2   .4174817          0         1  Provider/Compounder took...
+cp_23         1636      2   .1894866          0         1  Provider/Compounder took...
+cp_24         1633      2   .0881813          0         1  Provider filled out a PP...
+cp_24_a          6      2   1.833333          1         2  PPIA case registration ID
+cp_25         1635      3   1.257492          1         4  Language spoken to provider
+dr_1          1636      2   .4517115          0         1  TB Suspicion
+dr_1a         1631      2   .0239117          0         1  Provider said it was nec...
+dr_2          1636      2   .6515892          0         1  Prescription
+dr_2a         1109      2   .7601443          0         1  Medicine Prescription
+dr_2b         1105      2   .6895928          0         1  Diagnostic Test Prescrip...
+dr_3          1636      3   .1986553          0         3  Any Diagnosis
+dr_3a          323     31          .          .         .  Diagnosis
+dr_4          1636      2   .0831296          0         1  Referral for Further Man...
+dr_4a          139      4   1.705036          1         4  Private Provider/Hospita...
+dr_4b_netw~k   136      2   .2132353          0         1  Networked Referral
+dr_4c_netw~k    44      2   .4090909          0         1  Networked Provider
+dr_5          1636      3   .0843521          0         3  Received Vouchers or Ref...
+dr_5a          139      2    .294964          0         1  Voucher or referral coup...
+dr_5a_no        41     36          .          .         .  Treatment voucher no.
+dr_5b          139      2   .7625899          0         1  Voucher or referral coup...
+dr_5b_no       105     95          .          .         .  CXR voucher no.
+dr_5c          139      2   .4676259          0         1  Voucher or referral coup...
+dr_5c_no        64     36   6387.453        -99     64224  GeneXpert voucher no.
+ed_1          1632      3    .002451          0         3  Errors in presentation
+ed_1_text        3      2          .          .         .  Errors in presentation
+evening       1636      2   .4425428          0         1  Interaction Timing
+false         1636      1          0          0         0  False Observation for NN...
+form          1636   1636          .          .         .  Paper Form Number
+g_1           1636      2   .1118582          0         1  Used Cell Phone
+g_2           1636      2   .1124694          0         1  Other People in Room
+g_3           1636      2   .0305623          0         1  TV On
+g_4           1636      2   .8111247          0         1  Did you like this doctor?
+g_5           1635      2   .7767584          0         1  Would you go to this doc...
+g_6           1636      3   2.679707          1         3  Doctor create private en...
+g_7           1636      3   2.352689          1         3  Knowledgeable about illn...
+g_8           1636      3   2.396699          1         3  Address worries seriously?
+g_9           1636      3   1.511002          1         3  Explain about illness?
+g_10          1636      3   2.143032          1         3  Explain treatment plan?
+g_11          1636     11   6.179707          0        10  SP provider rating
+med           1636     11   3.991443          0        11  Number of Medicines
+med_a_1       1404      4   1.354701          0         6  Med 1 Prescribed/Dispensed
+med_a_2       1364      2   1.344575          1         2  Med 2 Prescribed/Dispensed
+med_a_3       1249      3    1.31225          1         3  Med 3 Prescribed/Dispensed
+med_a_4       1041      2   1.299712          1         2  Med 4 Prescribed/Dispensed
+med_a_5        761      4   1.395532          1         7  Med 5 Prescribed/Dispensed
+med_a_6        433      3   1.482679          1         6  Med 6 Prescribed/Dispensed
+med_a_7        124      3   1.637097          1         7  Med 7 Prescribed/Dispensed
+med_a_8         51      2   1.607843          1         2  Med 8 Prescribed/Dispensed
+med_a_9         13      2   1.538462          1         2  Med 9 Prescribed/Dispensed
+med_a_10         2      1          1          1         1  Med 10 Prescribed/Dispensed
+med_a_11         2      1          1          1         1  Med 11 Prescribed/Dispensed
+med_a_12         1      1          1          1         1  Med 12 Prescribed/Dispensed
+med_anti_s~r  1636      2   .0207824          0         1  Antibiotics & Steroids
+med_any_      1636      2   .8594132          0         1  Gave Medicine
+med_b1_1      1405    397          .          .         .  Med 1 Brand
+med_b1_2      1369    373          .          .         .  Med 2 Brand
+med_b1_3      1253    322          .          .         .  Med 3 Brand
+med_b1_4      1047    315          .          .         .  Med 4 Brand
+med_b1_5       768    361          .          .         .  Med 5 Brand
+med_b1_6       436    271          .          .         .  Med 6 Brand
+med_b1_7       126    106          .          .         .  Med 7 Brand
+med_b1_8        51     42          .          .         .  Med 8 Brand
+med_b1_9        13     12          .          .         .  Med 9 Brand
+med_b1_10        2      2          .          .         .  Med 10 Brand
+med_b1_11        2      2          .          .         .  Med 11 Brand
+med_b1_12        1      1          .          .         .  Med 12 Brand
+med_b2_1      1398    577          .          .         .  Med 1 Generic
+med_b2_2      1361    647          .          .         .  Med 2 Generic
+med_b2_3      1249    552          .          .         .  Med 3 Generic
+med_b2_4      1043    523          .          .         .  Med 4 Generic
+med_b2_5       765    455          .          .         .  Med 5 Generic
+med_b2_6       433    291          .          .         .  Med 6 Generic
+med_b2_7       126    101          .          .         .  Med 7 Generic
+med_b2_8        51     50          .          .         .  Med 8 Generic
+med_b2_9        13     12          .          .         .  Med 9 Generic
+med_b2_10        2      2          .          .         .  Med 10 Generic
+med_b2_11        2      2          .          .         .  Med 11 Generic
+med_b2_12        1      1          .          .         .  Med 12 Generic
+med_c_1        206     84   77.21359          0       402  Med 1 Price
+med_c_2        170     77   62.91765          0      2410  Med 2 Price
+med_c_3        131     56   44.10687          0       255  Med 3 Price
+med_c_4        139     65   52.99281          0       250  Med 4 Price
+med_c_5        180     74   64.17778          0       480  Med 5 Price
+med_c_6        141     71   71.33752          0       840  Med 6 Price
+med_c_7         51     37   57.15686          0       138  Med 7 Price
+med_c_8         23     16    65.3913         20       226  Med 8 Price
+med_c_9          7      7   66.42857         48       100  Med 9 Price
+med_c_10         0      0          .          .         .  Med 10 Price
+med_c_11         0      0          .          .         .  Med 11 Price
+med_c_12         0      0          .          .         .  Med 12 Price
+med_d_1       1401      5   1.278373          1         5  Med 1 Type
+med_d_2       1363      5   1.280264          1         5  Med 2 Type
+med_d_3       1249      5   1.270616          1         7  Med 3 Type
+med_d_4       1042      4   1.368522          1         5  Med 4 Type
+med_d_5        762      5   1.574803          1         5  Med 5 Type
+med_d_6        430      5   1.751163          1         5  Med 6 Type
+med_d_7        126      4   1.984127          1         5  Med 7 Type
+med_d_8         50      3       2.02          1         3  Med 8 Type
+med_d_9         13      4   1.769231          1         5  Med 9 Type
+med_d_10         2      1          1          1         1  Med 10 Type
+med_d_11         2      2          2          1         3  Med 11 Type
+med_d_12         1      1          1          1         1  Med 12 Type
+med_e_1       1403     12   1.146828         .5        15  Med 1 Dose
+med_e_2       1365     11    1.07652          0         5  Med 2 Dose
+med_e_3       1249     10   1.043715          0         5  Med 3 Dose
+med_e_4       1042     12   1.050816          0         5  Med 4 Dose
+med_e_5        764     11   1.090615          0         5  Med 5 Dose
+med_e_6        429      8   1.181818         .5        10  Med 6 Dose
+med_e_7        125      5      2.416         .5       150  Med 7 Dose
+med_e_8         51      3   3.196078          1       100  Med 8 Dose
+med_e_9         13      2   1.230769          1         2  Med 9 Dose
+med_e_10         2      1          1          1         1  Med 10 Dose
+med_e_11         2      2        .75         .5         1  Med 11 Dose
+med_e_12         1      1          1          1         1  Med 12 Dose
+med_f_1        386     30   396.9152        -99      2300  Med 1 Strength
+med_f_2        285     31   324.9711        -99      2300  Med 2 Strength
+med_f_3        238     29   317.1996        -99      1500  Med 3 Strength
+med_f_4        206     27   302.2864        -99      1850  Med 4 Strength
+med_f_5        250     23    251.756        -99      1000  Med 5 Strength
+med_f_6        190     20      229.3          5       650  Med 6 Strength
+med_f_7         62     14   254.6169       1.25       650  Med 7 Strength
+med_f_8         23      8   205.8696         40       625  Med 8 Strength
+med_f_9          5      2        180        100       500  Med 9 Strength
+med_f_10         0      0          .          .         .  Med 10 Strength
+med_f_11         0      0          .          .         .  Med 11 Strength
+med_f_12         0      0          .          .         .  Med 12 Strength
+med_g_1       1403      6   2.483963          0         6  Med 1 Times per Day
+med_g_2       1368      6   2.527047          0        15  Med 2 Times per Day
+med_g_3       1251      5    2.53797          0         4  Med 3 Times per Day
+med_g_4       1043      6   2.436242        -99         4  Med 4 Times per Day
+med_g_5        766      6   2.513055          0        62  Med 5 Times per Day
+med_g_6        433      6   2.117783        -99         4  Med 6 Times per Day
+med_g_7        126      5   2.611111          0        30  Med 7 Times per Day
+med_g_8         51      3   2.470588          1         3  Med 8 Times per Day
+med_g_9         13      3   2.230769          1         3  Med 9 Times per Day
+med_g_10         2      2        2.5          2         3  Med 10 Times per Day
+med_g_11         2      1          3          3         3  Med 11 Times per Day
+med_g_12         1      1          3          3         3  Med 12 Times per Day
+med_h_1       1387     20  -.3583273        -99        99  Med 1 Number of Days
+med_h_2       1352     19   -.397929        -99        99  Med 2 Number of Days
+med_h_3       1232     17  -.6201299        -99        99  Med 3 Number of Days
+med_h_4       1036     17  -2.473938        -99        99  Med 4 Number of Days
+med_h_5        756     18  -7.390212        -99        99  Med 5 Number of Days
+med_h_6        428     15  -9.338785        -99        99  Med 6 Number of Days
+med_h_7        124     12  -15.52419        -99        99  Med 7 Number of Days
+med_h_8         50      8     -23.26        -99        15  Med 8 Number of Days
+med_h_9         13      6  -15.76923        -99        60  Med 9 Number of Days
+med_h_10         2      1          1          1         1  Med 10 Number of Days
+med_h_11         2      1          1          1         1  Med 11 Number of Days
+med_h_12         1      1          1          1         1  Med 12 Number of Days
+med_i_1         82      4   1.658537        -99         7  Med 1 Days per Week
+med_i_2         63      3   1.920635        -99         7  Med 2 Days per Week
+med_i_3         52      4   3.019231        -99         7  Med 3 Days per Week
+med_i_4         29      5   .0344828        -99         7  Med 4 Days per Week
+med_i_5         21      2   3.285714          1         7  Med 5 Days per Week
+med_i_6         15      2          3          1         7  Med 6 Days per Week
+med_i_7          0      0          .          .         .  Med 7 Days per Week
+med_i_8          0      0          .          .         .  Med 8 Days per Week
+med_i_9          0      0          .          .         .  Med 9 Days per Week
+med_i_10         0      0          .          .         .  Med 10 Days per Week
+med_i_11         0      0          .          .         .  Med 11 Days per Week
+med_i_12         0      0          .          .         .  Med 12 Days per Week
+med_j_1         69     10  -13.02899        -99         9  Med 1 Number of Weeks
+med_j_2         55      8  -19.10909        -99         9  Med 2 Number of Weeks
+med_j_3         43      7  -15.86047        -99         9  Med 3 Number of Weeks
+med_j_4         16      5    -22.375        -99        12  Med 4 Number of Weeks
+med_j_5         10      6      -15.2        -99        17  Med 5 Number of Weeks
+med_j_6          5      4        -16        -99         8  Med 6 Number of Weeks
+med_j_7          0      0          .          .         .  Med 7 Number of Weeks
+med_j_8          0      0          .          .         .  Med 8 Number of Weeks
+med_j_9          0      0          .          .         .  Med 9 Number of Weeks
+med_j_10         0      0          .          .         .  Med 10 Number of Weeks
+med_j_11         0      0          .          .         .  Med 11 Number of Weeks
+med_j_12         0      0          .          .         .  Med 12 Number of Weeks
+med_k_1       1405     15   4.010676          1        50  Med 1 Code
+med_k_2       1369     14   4.726077          0        50  Med 2 Code
+med_k_3       1253     14   4.789306          1        50  Med 3 Code
+med_k_4       1047     13    4.96084          1        50  Med 4 Code
+med_k_5        770     14   6.444156          1        50  Med 5 Code
+med_k_6        437     13   8.176201          1        50  Med 6 Code
+med_k_7        126     12   10.35714          1        50  Med 7 Code
+med_k_8         50      7      10.64          1        17  Med 8 Code
+med_k_9         13      8   9.923077          1        17  Med 9 Code
+med_k_10         2      2        3.5          1         6  Med 10 Code
+med_k_11         2      2          9          1        17  Med 11 Code
+med_k_12         1      1          1          1         1  Med 12 Code
+med_k_any_1   1636      2   .5152812          0         1  Unlabelled Medicine
+med_k_any_2   1636      1          0          0         0  Unlabelled injections
+med_k_any_3   1636      2   .0006112          0         1  IV bottles/glucose drip
+med_k_any_4   1636      2   .0232274          0         1  Ayurvedic medicines
+med_k_any_5   1636      2   .0220049          0         1  Homeopathic medicines
+med_k_any_6   1636      2   .4786064          0         1  Antibiotics
+med_k_any_7   1636      2   .1240831          0         1  Analgesics
+med_k_any_8   1636      2   .1522005          0         1  Anti-ulcer medication
+med_k_any_9   1636      2   .0409535          0         1  Steroids
+med_k_any_10  1636      2   .1075795          0         1  Anti-allergy medicines
+med_k_any_11  1636      2   .0006112          0         1  Cardiac medication
+med_k_any_12  1636      2   .0012225          0         1  Psychiatric/ neural medi...
+med_k_any_13  1636      2   .1216381          0         1  Identified as anther typ...
+med_k_any_14  1636      1          0          0         0  Household remedies
+med_k_any_15  1636      2   .0220049          0         1  NSAIDS
+med_k_any_16  1636      2   .2903423          0         1  Cough Syrups
+med_k_any_17  1636      2   .1234719          0         1  Bronchodilators
+med_k_any_50  1636      2   .0262836          0         1  Unclassified
+med_l_1        339      4   2.427729          0         3  Med 1 Antibiotic Type
+med_l_2        142      3   2.161972          1         3  Med 2 Antibiotic Type
+med_l_3         82      3   1.853659          1         3  Med 3 Antibiotic Type
+med_l_4        104      3   2.519231          1         3  Med 4 Antibiotic Type
+med_l_5        141      3   2.737589          1         3  Med 5 Antibiotic Type
+med_l_6        106      3   2.811321          1         3  Med 6 Antibiotic Type
+med_l_7         31      2   2.903226          2         3  Med 7 Antibiotic Type
+med_l_8         10      2        2.8          2         3  Med 8 Antibiotic Type
+med_l_9          1      1          3          3         3  Med 9 Antibiotic Type
+med_l_10         1      1          2          2         2  Med 10 Antibiotic Type
+med_l_11         0      0          .          .         .  Med 11 Antibiotic Type
+med_l_12         0      0          .          .         .  Med 12 Antibiotic Type
+med_l_any_1   1636      2   .0574572          0         1  Started TB Treatment
+med_l_any_2   1636      2   .0696822          0         1  Fluoroquinolones
+med_l_any_3   1636      2   .3698044          0         1  Other Antibiotic
+med_tb_dur~n    94     21          .          .         .  
+med_unlab_~6   588      3    .914966          0         2  Unlabelled Antibiotic
+med_unlab_~9   588      3   1.130952          0         2  Unlabelled Steroid
+med_unlab_~1   588      1          0          0         0  Unlabelled Anti-TB
+med_unlab_~2   588      2   .0357143          0         1  Unlabelled Fluoroquinolone
+med_unlab_~3   588      3   .8826531          0         2  Unlabelled Antibiotic
+ngo_ahi          2      1          .          .         .  ngo_ahi
+notes            4      2          .          .         .  notes
+p             1633     88   240.1696          0     10140  Amount Paid
+p_1            809      2   .7960445          0         1  Labs Price Known
+p_1a           644      3    .447205          0         3  Labs Itemized Price Known
+p_1b           645    110   668.7426          0     15960  Labs Total Price
+p_2           1626      2   .3702337          0         1  Medicine Price Known
+p_2_tb           5      5       54.8         20        99  TB Drug Cost
+p_2a           603      2   .6185738          0         1  Medicine Itemized Price ...
+p_2b           601    169   166.8619          0      9350  Medicine Total Price
+p_3           1629      3   .4499693          0         7  Consultation Price Known
+p_3a          1633     77   234.6265          0     10140  Consultation Price
+p_inr_2014    1636    379   614.4487          0     17030  Total Price (INR)
+p_usd_2014    1636    379   9.831179          0    272.48  Total Cost (USD 2014)
+ppia_facil~0  1636      2   .3361858          0         1  Facility PPIA at Wave 0
+ppia_facil~1  1636      2   .6338631          0         1  Facility PPIA at Wave 1
+ppia_facil~2   636      2   .3474843          0         1  Facility PPSA in Wave 2
+ppia_provi~0   457      1          1          1         1  Provider PPIA at Wave 0
+ppia_provi~1   457      1          1          1         1  Provider PPIA at Wave 1
+ppia_provi~2   457      2   .5448578          0         1  Provider PPSA in Wave 2
+ppsa_cutoff    273     73   48.96052   2.388871  94.93835  % Cumulative
+ppsa_facil~y   234      4          .          .         .  Facility PPSA Category
+ppsa_facil~e  1580    691          .          .         .  Facility Code
+ppsa_hfid      285     76          .          .         .  HFID
+ppsa_notif~s   273     32    18.9011          4        59  Monthly average
+ppsa_provi~y   148      4          .          .         .  Provider PPSA Category
+ppsa_rd         76      1          1          1         1  RD Experiment Facility
+re_1          1636      2   .4064792          0         1  Chest X-Ray
+re_1_a         401     26   157.7182          0       490  Price
+re_1_c         568      3   .3855634          0         9  Networked Lab
+re_2          1636      2   .0018337          0         1  CT Scan
+re_2_a           1      1       3000       3000      3000  Price
+re_2_c           4      1          0          0         0  Networked Lab
+re_3          1636      2   .1363081          0         1  Sputum AFB
+re_3_a          47     17   200.4255          0       900  Price
+re_3_c         188      2   .3351064          0         1  Networked Lab
+re_4          1636      2   .0770171          0         1  GeneXpert
+re_4_a         106      5   238.9623          0      2500  Price
+re_4_c         122      2   .7131148          0         1  Networked Lab
+re_5          1636      2   .0110024          0         1  Sputum / DST
+re_5_a           3      3   716.6667          0      2000  Price
+re_5_c          20      2         .4          0         1  Networked Lab
+re_6          1636      2   .3753056          0         1  Blood Total/Differential...
+re_6_a         175     30   203.2286       -200       650  Price
+re_6_c         508      2   .2854331          0         1  Networked Lab
+re_7          1636      2   .0342298          0         1  HIV Test
+re_7_a           6      5   380.8333        150       580  Price
+re_7_c          45      2   .3777778          0         1  Networked Lab
+re_8          1636      2   .0654034          0         1  Diabetes Test
+re_8_a          17     10   116.4706         30       200  Price
+re_8_c          81      2   .3703704          0         1  Networked Lab
+re_9          1636      2   .0006112          0         1  TB Gold
+re_9_a           0      0          .          .         .  Price
+re_9_c           3      1          0          0         0  Networked Lab
+re_10         1628      2   .0006143          0         1  TB Elisa
+re_10_a          0      0          .          .         .  Price
+re_10_c          2      1          0          0         0  Networked Lab
+re_11         1627      2   .0688384          0         1  Mantoux
+re_11_a         11      8   146.3636         50       350  Price
+re_11_c         97      2   .1030928          0         1  Networked Lab
+re_12         1636      5   .3820293          0         4  Other
+re_12_1        299     94          .          .         .  Other Test 1
+re_12_2        186     75          .          .         .  Other Test 2
+re_12_3         94     57          .          .         .  Other Test 3
+re_12_4         46     31          .          .         .  Other Test 4
+re_12_a_1        0      0          .          .         .  Price
+re_12_a_2        0      0          .          .         .  Price
+re_12_a_3        0      0          .          .         .  Price
+re_12_a_4        0      0          .          .         .  Price
+re_12_b_1      295     19  -33.17288        -99      4500  Lab
+re_12_b_2      183      9  -87.10383        -99       500  Lab
+re_12_b_3       92      6  -34.59783        -99      5000  Lab
+re_12_b_4       44      3  -90.97727        -99       100  Lab
+re_12_c_1      242      2   .2933884          0         1  Networked Lab
+re_12_c_2      147      2   .3197279          0         1  Networked Lab
+re_12_c_3       79      2   .3417722          0         1  Networked Lab
+re_12_c_4       42      2   .3571429          0         1  Networked Lab
+re_any        1636      2   .4957213          0         1  Any Tests
+re_total      1636     10   1.559291          0         9  Number of Labs
+re_total_p~e  1636    127   318.8013          0     15960  Estimated Labs Price (INR)
+sc_2          1616     11   83.85891          3        89  Supervisor ID
+sc_3          1615    134          .          .         .  Form Checking Date
+sc_4           194      2   .0051546          0         1  Provider in CP16a networked
+sc_5            89      2   .1573034          0         1  Facility in DR4b networked
+sc_6            40      2       .175          0         1  Provider in DR4c networked
+source1_ahi    409    152          .          .         .  source1_ahi
+source2_ahi     55     27          .          .         .  source2_ahi
+source3_ahi      3      2          .          .         .  source3_ahi
+sp1_checkl~t   804      5   .5133706          0         1  
+sp1_h_1        804      2   .9378109          0         1  Duration of Cough
+sp1_h_1_gi~n    53      1          0          0         0  Duration of Cough
+sp1_h_2        804      2   .7661692          0         1  Sputum
+sp1_h_2_gi~n   191      2   .0052356          0         1  Sputum
+sp1_h_3        804      2   .1865672          0         1  Past TB
+sp1_h_3_gi~n   654      1          0          0         0  Past TB
+sp1_h_4        804      2   .1629353          0         1  Family TB
+sp1_h_4_gi~n   672      1          0          0         0  Family TB
+sp1_h_5        804      2   .2114428          0         1  Blood in Sputum
+sp1_h_5_gi~n   632      1          0          0         0  Blood in Sputum
+sp1_h_6        804      2   .4228856          0         1  Cough Throughout Day
+sp1_h_6_gi~n   464      1          0          0         0  Cough Throughout Day
+sp1_h_7        804      2    .829602          0         1  Fever
+sp1_h_7_gi~n   140      1          0          0         0  Fever
+sp1_h_8        804      2   .5995025          0         1  Fever Type
+sp1_h_8_gi~n   324      1          0          0         0  Fever Type
+sp1_h_9        804      2   .1330846          0         1  Family or Family with Si...
+sp1_h_9_gi~n   697      1          0          0         0  Family or Family with Si...
+sp1_h_10       804      2   .2549751          0         1  Chest Pain
+sp1_h_10_g~n   599      1          0          0         0  Chest Pain
+sp1_h_11       804      2    .318408          0         1  Loss of Appetite
+sp1_h_11_g~n   547      1          0          0         0  Loss of Appetite
+sp1_h_12       804      2   .2363184          0         1  Lost Weight
+sp1_h_12_g~n   612      1          0          0         0  Lost Weight
+sp1_h_13       804      2   .0534826          0         1  Wheezing
+sp1_h_13_g~n   761      1          0          0         0  Wheezing
+sp1_h_14       804      2   .2313433          0         1  Difficulty Breathing
+sp1_h_14_g~n   618      1          0          0         0  Difficulty Breathing
+sp1_h_15       804      2   .2512438          0         1  Smoking
+sp1_h_15_g~n   600      1          0          0         0  Smoking
+sp1_h_16       803      2   .0797011          0         1  Alcohol History
+sp1_h_16_g~n   740      1          0          0         0  Alcohol History`
+sp1_h_17       804      2   .6504975          0         1  Taken Medicines for Illness
+sp1_h_17_g~n   282      1          0          0         0  Taken Medicines for Illness
+sp1_h_18       804      2   .0410448          0         1  Diabetes
+sp1_h_18_g~n   770      2   .0285714          0        22  Diabetes
+sp1_h_19       804      2   .0099502          0         1  HIV/AIDS
+sp1_h_19_g~n   793      1          0          0         0  HIV/AIDS
+sp1_h_20       804      2   .4154229          0         1  Age
+sp1_h_20_g~n   465      1          0          0         0  Age
+sp1_h_21       804      2   .0945274          0         1  Provider Recorded Inform...
+sp1_h_22       799      2   .4593242          0         1  Other questions were asked
+sp1_h_22_1     372    271          .          .         .  Other question asked 1
+sp1_h_22_2      72     72          .          .         .  Other question asked 2
+sp2_checkl~t   247      7   .4197031          0         1  
+sp2_cxr_1      247      2   .9878543          0         1  SP brought a chest x-ray
+sp2_cxr_2      244      1          0          0         0  Provider Made Photocopy ...
+sp2_h_1        247      2   .9473684          0         1  Duration of Cough
+sp2_h_1_gi~n    13      1          0          0         0  Duration of Cough
+sp2_h_2        247      2   .5546559          0         1  Sputum
+sp2_h_2_gi~n   110      1          0          0         0  Sputum
+sp2_h_3        247      2   .2388664          0         1  Type of Doctor SP Saw
+sp2_h_3_gi~n   187      1          0          0         0  Type of Doctor SP Saw
+sp2_h_4        247      2   .3279352          0         1  Medicine Taken
+sp2_h_4_gi~n   165      1          0          0         0  Medicine Taken
+sp2_h_5        247      2   .0890688          0         1  For How Long Medicines W...
+sp2_h_5_gi~n   225      1          0          0         0  For How Long Medicines W...
+sp2_h_6        247      2   .3603239          0         1  Family TB
+sp2_h_6_gi~n   158      1          0          0         0  Family TB
+sp2_h_7        247      2   .9230769          0         1  Provider Saw X-Ray Film
+sp2_h_7_gi~n    19      1          0          0         0  Provider Saw X-Ray Film
+sp2_h_8        247      2   .9230769          0         1  Provider Read X-Ray Report
+sp2_h_8_gi~n    19      1          0          0         0  Provider Read X-Ray Report
+sp2_h_9        247      2   .1700405          0         1  Blood in Sputum
+sp2_h_9_gi~n   204      1          0          0         0  Blood in Sputum
+sp2_h_10       247      2   .1983806          0         1  Cough Throughout Day
+sp2_h_10_g~n   197      1          0          0         0  Cough Throughout Day
+sp2_h_11       247      2   .6680162          0         1  Fever
+sp2_h_11_g~n    81      1          0          0         0  Fever
+sp2_h_12       247      2    .437247          0         1  Fever type
+sp2_h_12_g~n   138      1          0          0         0  Fever type
+sp2_h_13       247      2   .0080972          0         1  Previous Typhoid Diagnosis
+sp2_h_13_g~n   244      1          0          0         0  Previous Typhoid Diagnosis
+sp2_h_14       247      2   .4251012          0         1  Past TB
+sp2_h_14_g~n   141      1          0          0         0  Past TB
+sp2_h_15       247      2   .2186235          0         1  Family or Family with Si...
+sp2_h_15_g~n   192      1          0          0         0  Family or Family with Si...
+sp2_h_16       247      2   .1012146          0         1  Chest Pain
+sp2_h_16_g~n   221      1          0          0         0  Chest Pain
+sp2_h_17       247      2     .51417          0         1  Loss of Appetite
+sp2_h_17_g~n   120      1          0          0         0  Loss of Appetite
+sp2_h_18       247      2   .5020243          0         1  Lost Weight
+sp2_h_18_g~n   124      2   .0080645          0         1  Lost Weight
+sp2_h_19       247      2   .0080972          0         1  Wheezing
+sp2_h_19_g~n   245      1          0          0         0  Wheezing
+sp2_h_20       247      2   .1659919          0         1  Difficulty Breathing
+sp2_h_20_g~n   206      1          0          0         0  Difficulty Breathing
+sp2_h_21       247      2   .1781377          0         1  Smoking
+sp2_h_21_g~n   203      1          0          0         0  Smoking
+sp2_h_22       247      2    .145749          0         1  Alcohol History
+sp2_h_22_g~n   211      1          0          0         0  Alcohol History
+sp2_h_23       247      2   .1538462          0         1  Taken Medicines for Illness
+sp2_h_23_g~n   209      1          0          0         0  Taken Medicines for Illness
+sp2_h_24       247      2   .1214575          0         1  Diabetes
+sp2_h_24_g~n   217      1          0          0         0  Diabetes
+sp2_h_25       247      2   .0566802          0         1  HIV/AIDS
+sp2_h_25_g~n   233      1          0          0         0  HIV/AIDS
+sp2_h_26       247      2   .1133603          0         1  Other Recent Illnesses
+sp2_h_26_g~n   219      1          0          0         0  Other Recent Illnesses
+sp2_h_27       247      2   .5060729          0         1  Age
+sp2_h_27_g~n   119      1          0          0         0  Age
+sp2_h_28       246      2   .1178862          0         1  Provider Recorded Inform...
+sp2_h_29       246      2    .300813          0         1  Other questions were asked
+sp2_h_29_1      75     73          .          .         .  Other question asked 1
+sp2_h_29_2      32     31          .          .         .  Other question asked 2
+sp3_checkl~t   204      6    .683415          0         1  
+sp3_h_1        204      2    .872549          0         1  Duration of Cough
+sp3_h_1_gi~n    26      1          0          0         0  Duration of Cough
+sp3_h_2        204      2   .6470588          0         1  Sputum
+sp3_h_2_gi~n    70      1          0          0         0  Sputum
+sp3_h_3        204      2   .8676471          0         1  Saw Sputum Results
+sp3_h_3_gi~n    27      1          0          0         0  Saw Sputum Results
+sp3_h_4        203      2   .3448276          0         1  Past Treatment for TB
+sp3_h_4_gi~n   132      1          0          0         0  Past Treatment for TB
+sp3_h_5        204      2   .2647059          0         1  Blood in Sputum
+sp3_h_5_gi~n   149      1          0          0         0  Blood in Sputum
+sp3_h_6        204      2   .5245098          0         1  Cough Throughout Day
+sp3_h_6_gi~n    97      1          0          0         0  Cough Throughout Day
+sp3_h_7        204      2   .8529412          0         1  Fever
+sp3_h_7_gi~n    30      1          0          0         0  Fever
+sp3_h_8        204      2   .6372549          0         1  Fever Type
+sp3_h_8_gi~n    74      2   .0135135          0         1  Fever Type
+sp3_h_9        204      2   .2401961          0         1  Family TB
+sp3_h_9_gi~n   155      1          0          0         0  Family TB
+sp3_h_10       204      2   .1421569          0         1  Family or Family with Si...
+sp3_h_10_g~n   175      1          0          0         0  Family or Family with Si...
+sp3_h_11       204      2   .1617647          0         1  Chest Pain
+sp3_h_11_g~n   170      1          0          0         0  Chest Pain
+sp3_h_12       204      2   .4656863          0         1  Loss of Appetite
+sp3_h_12_g~n   109      1          0          0         0  Loss of Appetite
+sp3_h_13       204      2   .3872549          0         1  Lost Weight
+sp3_h_13_g~n   125      1          0          0         0  Lost Weight
+sp3_h_14       204      2   .0196078          0         1  Wheezing
+sp3_h_14_g~n   199      1          0          0         0  Wheezing
+sp3_h_15       204      2   .2058824          0         1  Difficulty Breathing
+sp3_h_15_g~n   162      1          0          0         0  Difficulty Breathing
+sp3_h_16       204      2   .2401961          0         1  Smoking
+sp3_h_16_g~n   155      1          0          0         0  Smoking
+sp3_h_17       204      2   .1666667          0         1  Alcohol
+sp3_h_17_g~n   169      1          0          0         0  Alcohol
+sp3_h_18       204      2   .4656863          0         1  Taken Medicines for Illness
+sp3_h_18_g~n   109      1          0          0         0  Taken Medicines for Illness
+sp3_h_19       204      1          0          0         0  Diabetes
+sp3_h_19_g~n   204      1          0          0         0  Diabetes
+sp3_h_20       204      2   .0098039          0         1  HIV/AIDS
+sp3_h_20_g~n   201      1          0          0         0  HIV/AIDS
+sp3_h_21       204      2    .122549          0         1  Children in Family
+sp3_h_21_g~n   178      1          0          0         0  Children in Family
+sp3_h_22       204      2   .4166667          0         1  Age
+sp3_h_22_g~n   119      1          0          0         0  Age
+sp3_h_23       204      2   .1176471          0         1  Provider Recorded Inform...
+sp3_h_24       203      2   .2364532          0         1  Other questions were asked
+sp3_h_24_1      47     39          .          .         .  Other question asked 1
+sp3_h_24_2      11     11          .          .         .  Other question asked 2
+sp3_spur_1     204      2   .9803922          0         1  SP brought a sputum report
+sp3_spur_2     199      2   .0251256          0         1  Provider Made Photocopy ...
+sp4_checkl~t   381     14   .4427941          0         1  
+sp4_h_1        381      2   .9448819          0         1  Duration of Cough
+sp4_h_1_gi~n    21      1          0          0         0  Duration of Cough
+sp4_h_2        381      2   .8057743          0         1  Sputum
+sp4_h_2_gi~n    74      1          0          0         0  Sputum
+sp4_h_3        381      2    .160105          0         1  Saw Sputum Results
+sp4_h_3_gi~n   319      1          0          0         0  Saw Sputum Results
+sp4_h_4        381      2   .5958005          0         1  Medication Taken Last Mo...
+sp4_h_4_gi~n   154      1          0          0         0  Medication Taken Last Mo...
+sp4_h_5        381      2   .2230971          0         1  Visited Governmental Hos...
+sp4_h_5_gi~n   296      2   .0033784          0         1  Visited Governmental Hos...
+sp4_h_6        380      2   .2078947          0         1  Treatment for Previous I...
+sp4_h_6_gi~n   300      1          0          0         0  Treatment for Previous I...
+sp4_h_7        381      2   .2703412          0         1  Sputum or X-Rays Done fo...
+sp4_h_7_gi~n   278      1          0          0         0  Sputum or X-Rays Done fo...
+sp4_h_8        381      2   .1653543          0         1  Diagnosis Given by Gover...
+sp4_h_8_gi~n   318      1          0          0         0  Diagnosis Given by Gover...
+sp4_h_9        381      2   .3569554          0         1  Past TB Treatment
+sp4_h_9_gi~n   245      1          0          0         0  Past TB Treatment
+sp4_h_10       381      2   .7007874          0         1  For How Long Past TB Tre...
+sp4_h_10_g~n   115      1          0          0         0  For How Long Past TB Tre...
+sp4_h_11       381      2   .5564304          0         1  Reason for Stopping
+sp4_h_11_g~n   169      1          0          0         0  Reason for Stopping
+sp4_h_12       381      2   .3254593          0         1  Previous Treatment Medic...
+sp4_h_12_g~n   257      1          0          0         0  Previous Treatment Medic...
+sp4_h_13       381      2   .2152231          0         1  Blood in Sputum
+sp4_h_13_g~n   299      1          0          0         0  Blood in Sputum
+sp4_h_14       381      2   .4146982          0         1  Cough Throughout Day
+sp4_h_14_g~n   223      1          0          0         0  Cough Throughout Day
+sp4_h_15       381      2   .7716535          0         1  Fever
+sp4_h_15_g~n    87      1          0          0         0  Fever
+sp4_h_16       381      2    .519685          0         1  Fever Type
+sp4_h_16_g~n   182      1          0          0         0  Fever Type
+sp4_h_17       381      2   .1102362          0         1  Similar Symptoms Before
+sp4_h_17_g~n   338      1          0          0         0  Similar Symptoms Before
+sp4_h_18       381      2   .1574803          0         1  Family TB
+sp4_h_18_g~n   321      1          0          0         0  Family TB
+sp4_h_19       381      2   .2887139          0         1  Chest Pain
+sp4_h_19_g~n   271      1          0          0         0  Chest Pain
+sp4_h_20       380      2   .4289474          0         1  Loss of Appetite
+sp4_h_20_g~n   217      1          0          0         0  Loss of Appetite
+sp4_h_21       380      2   .3105263          0         1  Lost Weight
+sp4_h_21_g~n   262      1          0          0         0  Lost Weight
+sp4_h_22       380      2   .0236842          0         1  Wheezing
+sp4_h_22_g~n   370      1          0          0         0  Wheezing
+sp4_h_23       380      2   .2657895          0         1  Difficulty in Breathing
+sp4_h_23_g~n   280      2   .0035714          0         1  Difficulty in Breathing
+sp4_h_24       380      2   .3105263          0         1  Smoking
+sp4_h_24_g~n   263      2   .0038023          0         1  Smoking
+sp4_h_25       380      2        .15          0         1  Alcohol
+sp4_h_25_g~n   324      2   .0030864          0         1  Alcohol
+sp4_h_26       380      2   .0684211          0         1  Diabetes
+sp4_h_26_g~n   354      1          0          0         0  Diabetes
+sp4_h_27       380      2   .0052632          0         1  HIV/AIDS
+sp4_h_27_g~n   378      1          0          0         0  HIV/AIDS
+sp4_h_28       380      2         .1          0         1  High Blood Pressure or H...
+sp4_h_28_g~n   342      1          0          0         0  High Blood Pressure or H...
+sp4_h_29       380      2   .1578947          0         1  Presence of Children
+sp4_h_29_g~n   320      1          0          0         0  Presence of Children
+sp4_h_30       380      2   .5578947          0         1  Age
+sp4_h_30_g~n   169      1          0          0         0  Age
+sp4_h_31       380      2   .1631579          0         1  Provider Recorded Inform...
+sp4_h_32       378      2   .2301587          0         1  Other questions were asked
+sp4_h_32_1      88     72          .          .         .  Other question asked 1
+sp4_h_32_2      13     13          .          .         .  Other question asked 2
+sp4_spur_1     380      2   .1394737          0         1  SP brought a sputum report
+sp4_spur_2      72      2   .0138889          0         1  Provider Made Photocopy ...
+sp_age        1636     12   29.64609         21        38  SP Age
+sp_cases      1636      7          .          .         .  SP Cases
+sp_city       1636     14          .          .         .  SP City
+sp_dob        1636     17          .          .         .  SP DOB
+sp_gender     1636      2          .          .         .  SP Gender
+sp_height     1636     12   167.6858        150       184  SP Height (cm)
+sp_id         1636     17   24.23166         11        44  SP ID
+sp_language   1636      6          .          .         .  SP Language
+sp_male       1636      2   .8227384          0         1  SP Male
+sp_state      1636      3          .          .         .  SP State
+sp_weight     1636     14   57.97311         48        67  SP Weight (kg)
+t_2           1634      2   .1652387          0         1  Injection
+t_3           1634      2    .004896          0         1  IV
+t_4           1633      2   .0036742          0         1  Other Invasive Exams
+t_4a             2      2          .          .         .  Other Invasive Exam Type
+t_5           1633      2   .1120637          0         1  Danger Signs
+t_6           1634      2   .1787026          0         1  Duration of Treatment
+t_7           1634      2   .1744186          0         1  Treatment Completion
+t_8           1634      2   .1701346          0         1  Taking Medicines Regularly
+t_9           1634      2   .0520196          0         1  Side Effects
+t_10          1632      2   .1629902          0         1  Cough Hygiene
+t_11          1634      2   .1456548          0         1  Smoking Cessation
+t_12          1632      2   .8033088          0         1  Ask to Return
+t_12a         1331      2    .040571          0         1  Return if Symptoms Persist
+t_12b         1328      2   .0060241          0         1  Return if Symptoms Worsen
+t_12c         1330      2   .1263158          0         1  Return to Get Medicines
+t_12d         1327      2   .5237378          0         1  Return for Test Results
+t_12e         1331      2   .4620586          0         1  Return After So Many Days
+t_12e_days     623     13   2.420546          0        60  Number of Days
+t_12f         1329      2   .0767494          0         1  Return for Other Reason
+t_12f_spec     108     50          .          .         .  Other Reason
+tag_provider  1636      2   .4462103          0         1  tag(qutub_id)
+time          1627    571   5.387533         .5     25.25  Time with Provider (min)
+time_id       1636    734          .          .         .  QuTUB ID
+time_in       1615    502   5.48e+07    4500000  8.19e+07  Time In
+time_out      1632    530   5.67e+07    3900000  8.46e+07  Time Out
+time_total    1611    165   35.49783          0       716  Time in Clinic (min)
+time_waiting  1603   1265   29.91229  -6.833334  713.3666  Time Waiting (min)
+--------------------------------------------------------------------------------------
