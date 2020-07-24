@@ -1,11 +1,11 @@
 
 Variable       Obs Unique       Mean        Min       Max  Label
---------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 qutub_id      2231    687          .          .         .  Facility ID
 qutub_id_p~r  2231    692          .          .         .  Provider ID
 qutub_sample  2231      6   5.562976          1         9  Sample Type
 case          2231      5   3.539668          1         7  Case
-trial_assi~t   822      2   .5036496          0         1  AYUSH priority list for ...
+trial_assi~t   822      2   .5036496          0         1  AYUSH priority list for K/E and L
 trial_gx       822      2   .0717762          0         1  GX Vouchers
 trial_gx_d~e    77      9          .          .         .  GX Vouchers Date
 trial_notes    480    117          .          .         .  Notes
@@ -16,14 +16,14 @@ Comments1        0      0          .          .         .  Comment1
 Comments2        0      0          .          .         .  Comment2
 ce_1          2228      2   .4304309          0         1  Pulse
 ce_2          2222      2   .8555356          0         1  Auscultation
-ce_2a          264      2   .5568182          0         1  Provider commented on au...
+ce_2a          264      2   .5568182          0         1  Provider commented on auscultation
 ce_3          2225      2   .0979775          0         1  Temperature
 ce_4          2230      2   .2735426          0         1  Throat Exam
 ce_5          2230      2   .3874439          0         1  Blood Pressure
 ce_6          2228      2   .1754937          0         1  Weight
 ce_7          2228      2   .2212747          0         1  Abdomen palpitation
 checklist     2231    147   .2985895          0  .9428571  Checklist %
-checklist_~t  1585     14   .4586416          0         1  Essential History Checkl...
+checklist_~t  1585     14   .4586416          0         1  Essential History Checklist %
 checklist_n   2231     31   9.917078          0        33  Checklist #
 correct       2231      2   .2787987          0         1  Correct Case Management
 cp_2          2231      1          3          3         3  City ID
@@ -32,7 +32,7 @@ cp_5          2133     13   6.432255        -11        88  Provider Qualificatio
 cp_5_ayush    2231      2   .5965935          0         1  AYUSH
 cp_5_mbbs     2231      2   .3142089          0         1  MBBS
 cp_5_other    2231      2   .0891977          0         1  Other Qualification
-cp_5_qual     2231      3   2.103989          0         3  RECODE of cp_5 (Provider...
+cp_5_qual     2231      3   2.103989          0         3  RECODE of cp_5 (Provider Qualification)
 cp_5_rmp      2231      1          0          0         0  RMP
 cp_7          2231    847          .          .         .  Provider ID
 cp_9          2227     14   85.05568          2        97  Interviewer ID
@@ -55,31 +55,31 @@ cp_14_3         64      1          1          1         1  Visit 3 Complete
 cp_14a_1       350      8   4.108571          1         9  Visit 1 Incomplete Reason
 cp_14a_2        64      5   3.546875          0         9  Visit 2 Incomplete Reason
 cp_14a_3         0      0          .          .         .  Visit 3 Incomplete Reason
-cp_14b_1        39      8   2.282051          0         7  Visit 1 Days until appoi...
-cp_14b_2         6      4   2.666667          0         7  Visit 2 Days until appoi...
-cp_14b_3         0      0          .          .         .  Visit 3 Days until appoi...
+cp_14b_1        39      8   2.282051          0         7  Visit 1 Days until appointment
+cp_14b_2         6      4   2.666667          0         7  Visit 2 Days until appointment
+cp_14b_3         0      0          .          .         .  Visit 3 Days until appointment
 cp_14c        2230    570          .          .         .  Visit Departure Time
-cp_14d_mm     2231     29   3.837741          0        72  Total time with provider...
-cp_14d_ss     2225     62   25.08634          0        83  Total time with provider...
-cp_15         2231      2   .9964142          0         1  Went to Correct Clinic L...
+cp_14d_mm     2231     29   3.837741          0        72  Total time with provider - minutes
+cp_14d_ss     2225     62   25.08634          0        83  Total time with provider - seconds
+cp_15         2231      2   .9964142          0         1  Went to Correct Clinic Location
 cp_16         1950      2   .9805128          0         1  Saw Sampled Provider
 cp_17         2229      4    2.23598          1         6  Provider Age Group
 cp_18         2230      3   .8340807          0         4  Provider Male
 cp_19         2231     37   2.367996          0        58  Patients Waiting on Arrival
-cp_20         2231     28   2.138055          0        40  Patients Waiting on Depa...
+cp_20         2231     28   2.138055          0        40  Patients Waiting on Departure
 cp_21         2224      2   .0476619          0         1  Provider Has CFR
-cp_22         2231      2   .5154639          0         1  Provider/Compounder took...
-cp_23         2230      2   .2242152          0         1  Provider/Compounder took...
+cp_22         2231      2   .5154639          0         1  Provider/Compounder took Personal Details
+cp_23         2230      2   .2242152          0         1  Provider/Compounder took phone number
 cp_24         2231      3   1.272972          1         4  Language
 dr_1          2231      2   .2536979          0         1  TB Suspicion
-dr_1a         2230      2   .0183857          0         1  Provider said it was nec...
+dr_1a         2230      2   .0183857          0         1  Provider said it was necessary to ascertain DR TB
 dr_2          2222      2   .6210621          0         1  Prescription
 dr_2a         1394      3   .8012912          0         3  Medicine Prescription
-dr_2b         1395      3   .6824373          0         3  Diagnostic Test Prescrip...
+dr_2b         1395      3   .6824373          0         3  Diagnostic Test Prescription
 dr_3          2221      2   .1823503          0         1  Any Diagnosis
 dr_3a            1      1          0          0         0  Diagnosis
 dr_4          2224      3    .068795          0         3  Referred
-dr_4a          145      5   1.565517          1         8  Private Provider/Hospita...
+dr_4a          145      5   1.565517          1         8  Private Provider/Hospital or DOTS or Other
 dr_4d           60     30   208653.7    -600217    330110  PPIA provider
 dr_5          2221      2   .0684376          0         1  PPIA Registration Form
 dr_5_no        149    131          .          .         .  PPIA Registration Number
@@ -92,7 +92,7 @@ dr_5c_no        74     23     314767        -99   9501636  GeneXpert Voucher Num
 dr_5d         2221      2   .0031517          0         1  Sputum Voucher
 dr_5d_no         3      2  -65.33333        -99         2  Sputum Voucher Number
 dr_5x         1579      2   .3141229          0         1  Tapped SP
-dr_5y         1580      2   .0867089          0         1  Tapped SP Prompted for V...
+dr_5y         1580      2   .0867089          0         1  Tapped SP Prompted for Vouchers
 dr_6a         2220      2   .0166667          0         1  Tried to Give Vouchers
 dr_6b         2221      2   .0027015          0         1  Asked for ID Card
 dr_6c         2221      2   .0022512          0         1  Asked to Return with ID
@@ -103,15 +103,15 @@ dr_6g         2220      2   .0009009          0         1  Vouchers Used in Past
 dr_6h         2219      2   .1135647          0         1  PPIA Promotional Materials
 ed1           2226      2   .0026954          0         1  Errors in presentation
 ed1_text         2      2          .          .         .  Errors in presentation
-false         2231      1          0          0         0  Duplicate Interaction An...
+false         2231      1          0          0         0  Duplicate Interaction Analytical
 form          2231   2231          .          .         .  Paper Form Number
 g1            2231      3   .1169879          0         3  Used Cell Phone
 g2            2231      2   .0986105          0         1  Other People in Room
 g3            2231      2   .0170327          0         1  TV On
 g4            2231      2   .8157777          0         1  Did you like this doctor?
-g5            2231      2   .8072613          0         1  Would you go to this doc...
-g6            2231      3    2.69117          1         3  Doctor create private en...
-g7            2231      3   2.323622          1         3  Knowledgeable about illn...
+g5            2231      2   .8072613          0         1  Would you go to this doctor again?
+g6            2231      3    2.69117          1         3  Doctor create private enviroment?
+g7            2231      3   2.323622          1         3  Knowledgeable about illness?
 g8            2231      3   2.285074          1         3  Address worries seriously?
 g9            2231      3   1.406544          1         3  Explain about illness?
 g10           2230      3   2.211659          1         3  Explain treatment plan?
@@ -255,22 +255,22 @@ med_k_10         7      5   7.428571          4        13  Med 10 Code
 med_k_11         4      3         13          7        16  Med 11 Code
 med_k_12         1      1          4          4         4  Med 12 Code
 med_k_any_1   2231      2    .552667          0         1  Unlabelled Medicine
-med_k_any_2   2231      2   .0013447          0         1  Med Code: Any Unlabelled...
-med_k_any_3   2231      2   .0022411          0         1  Med Code: Any IV bottles...
-med_k_any_4   2231      2   .0255491          0         1  Med Code: Any Ayurvedic ...
-med_k_any_5   2231      2   .0242044          0         1  Med Code: Any Homeopathi...
+med_k_any_2   2231      2   .0013447          0         1  Med Code: Any Unlabelled injections
+med_k_any_3   2231      2   .0022411          0         1  Med Code: Any IV bottles/glucose drip
+med_k_any_4   2231      2   .0255491          0         1  Med Code: Any Ayurvedic medicines
+med_k_any_5   2231      2   .0242044          0         1  Med Code: Any Homeopathic medicines
 med_k_any_6   2231      2   .4150605          0         1  Antibiotics
 med_k_any_7   2231      2   .1111609          0         1  Med Code: Any Analgesics
-med_k_any_8   2231      2   .1694307          0         1  Med Code: Any Anti-ulcer...
+med_k_any_8   2231      2   .1694307          0         1  Med Code: Any Anti-ulcer medication
 med_k_any_9   2231      2   .1255043          0         1  Steroids
-med_k_any_10  2231      2   .1918422          0         1  Med Code: Any Anti-aller...
-med_k_any_11  2231      2   .0040341          0         1  Med Code: Any Cardiac me...
-med_k_any_12  2231      2   .0228597          0         1  Med Code: Any Psychiatri...
-med_k_any_13  2231      2   .1156432          0         1  Med Code: Any Identified...
-med_k_any_14  2231      1          0          0         0  Med Code: Any Household ...
+med_k_any_10  2231      2   .1918422          0         1  Med Code: Any Anti-allergy medicines
+med_k_any_11  2231      2   .0040341          0         1  Med Code: Any Cardiac medication
+med_k_any_12  2231      2   .0228597          0         1  Med Code: Any Psychiatric/ neural medicines
+med_k_any_13  2231      2   .1156432          0         1  Med Code: Any Identified as anther type of medication
+med_k_any_14  2231      1          0          0         0  Med Code: Any Household remedies
 med_k_any_15  2231      2   .0017929          0         1  Med Code: Any NSAIDS
 med_k_any_16  2231      2   .2720753          0         1  Med Code: Any Cough Syrups
-med_k_any_17  2231      2   .1062304          0         1  Med Code: Any Bronchodil...
+med_k_any_17  2231      2   .1062304          0         1  Med Code: Any Bronchodilators
 med_k_any_50  2231      2    .009861          0         1  Med Code: Any Unclassified
 med_l_1        382      3   2.513089          1         3  Med 1 Antibiotic Type
 med_l_2        142      3   2.140845          1         3  Med 2 Antibiotic Type
@@ -294,7 +294,7 @@ p_1a           749      2   .4806409          0         1  Labs Itemized Price K
 p_1b           746    129   711.5603          0     10000  Labs Total Price
 p_2           2216      3   .3740975          0         3  Medicine Price Known
 p_2_tb           3      3         49         10        94  TB Drug Cost
-p_2a           828      3   .9782609          0         3  Medicine Itemized Price ...
+p_2a           828      3   .9782609          0         3  Medicine Itemized Price Known
 p_2b           835    362   217.0659          0      7572  Medicine Total Price
 p_3           2226      2   .4083558          0         1  Consultation Price Known
 p_3a          2231     79   231.2071          0      3000  Consultation Price
@@ -328,7 +328,7 @@ re_4_c         199     68          .          .         .  Engaged ID
 re_5          2225      2   .0134831          0         1  Sputum Culture / DST
 re_5_a          30      3  -54.13333        -99       950  Price
 re_5_c          25      9          .          .         .  Engaged ID
-re_6          2230      2   .3331839          0         1  Blood Total/Differential...
+re_6          2230      2   .3331839          0         1  Blood Total/Differential/ESR
 re_6_a         732     25  -28.26366        -99       450  Price
 re_6_c         621    114          .          .         .  Engaged ID
 re_7          2227      2   .0404131          0         1  HIV Test
@@ -383,8 +383,8 @@ sp1_h_7        748      2   .7687166          0         1  Fever
 sp1_h_7_gi~n   176      2   .0056818          0         1  Fever
 sp1_h_8        748      2   .5187166          0         1  Fever Type
 sp1_h_8_gi~n   358      1          0          0         0  Fever Type
-sp1_h_9        748      2   .0534759          0         1  Family or Family with Si...
-sp1_h_9_gi~n   707      1          0          0         0  Family or Family with Si...
+sp1_h_9        748      2   .0534759          0         1  Family or Family with Similar Symptoms
+sp1_h_9_gi~n   707      1          0          0         0  Family or Family with Similar Symptoms
 sp1_h_10       748      2    .144385          0         1  Chest Pain
 sp1_h_10_g~n   641      2   .0015601          0         1  Chest Pain
 sp1_h_11       748      2   .2660428          0         1  Loss of Appetite
@@ -407,13 +407,13 @@ sp1_h_19       748      2   .0187166          0         1  HIV/AIDS
 sp1_h_19_g~n   732      1          0          0         0  HIV/AIDS
 sp1_h_20       748      2   .3850267          0         1  Age
 sp1_h_20_g~n   461      1          0          0         0  Age
-sp1_h_21       747      2   .0963855          0         1  Provider Recorded Inform...
+sp1_h_21       747      2   .0963855          0         1  Provider Recorded Information
 sp1_h_22       744      2   .5362903          0         1  Other questions were asked
 sp1_h_22_1     397    308          .          .         .  Other question asked 1
 sp1_h_22_2      33     31          .          .         .  Other question asked 2
 sp2_checkl~t   252      7   .4133598          0         1  
 sp2_cxr_1      252      1          1          1         1  SP brought a chest x-ray
-sp2_cxr_2      252      2   .0119048          0         1  Provider Made Photocopy ...
+sp2_cxr_2      252      2   .0119048          0         1  Provider Made Photocopy of Results
 sp2_h_1        252      2   .9880952          0         1  Duration of Cough
 sp2_h_1_gi~n     3      1          0          0         0  Duration of Cough
 sp2_h_2        252      2   .6388889          0         1  Sputum
@@ -422,8 +422,8 @@ sp2_h_3        252      2   .2619048          0         1  Type of Doctor SP Saw
 sp2_h_3_gi~n   186      1          0          0         0  Type of Doctor SP Saw
 sp2_h_4        252      2        .25          0         1  Medicine Taken
 sp2_h_4_gi~n   189      1          0          0         0  Medicine Taken
-sp2_h_5        252      2   .0714286          0         1  For How Long Medicines W...
-sp2_h_5_gi~n   234      1          0          0         0  For How Long Medicines W...
+sp2_h_5        252      2   .0714286          0         1  For How Long Medicines Were Taken
+sp2_h_5_gi~n   234      1          0          0         0  For How Long Medicines Were Taken
 sp2_h_6        252      2   .2698413          0         1  Family TB
 sp2_h_6_gi~n   184      1          0          0         0  Family TB
 sp2_h_7        252      2   .9722222          0         1  Provider Saw X-Ray Film
@@ -442,8 +442,8 @@ sp2_h_13       252      2   .0357143          0         1  Previous Typhoid Diag
 sp2_h_13_g~n   243      1          0          0         0  Previous Typhoid Diagnosis
 sp2_h_14       252      2   .4484127          0         1  Past TB
 sp2_h_14_g~n   139      1          0          0         0  Past TB
-sp2_h_15       251      2   .0996016          0         1  Family or Family with Si...
-sp2_h_15_g~n   227      2   .0044053          0         1  Family or Family with Si...
+sp2_h_15       251      2   .0996016          0         1  Family or Family with Similar Symptoms
+sp2_h_15_g~n   227      2   .0044053          0         1  Family or Family with Similar Symptoms
 sp2_h_16       252      2   .1587302          0         1  Chest Pain
 sp2_h_16_g~n   211      1          0          0         0  Chest Pain
 sp2_h_17       252      2   .5198413          0         1  Loss of Appetite
@@ -466,7 +466,7 @@ sp2_h_25       252      2   .0515873          0         1  Other Recent Illnesse
 sp2_h_25_g~n   238      1          0          0         0  Other Recent Illnesses
 sp2_h_26       252      2   .5674603          0         1  Age
 sp2_h_26_g~n   109      1          0          0         0  Age
-sp2_h_27       252      2   .0436508          0         1  Provider Recorded Inform...
+sp2_h_27       252      2   .0436508          0         1  Provider Recorded Information
 sp2_h_28       252      2   .2063492          0         1  Other questions were asked
 sp2_h_28_1      51     44          .          .         .  Other question asked 1
 sp2_h_28_2       4      4          .          .         .  Other question asked 2
@@ -489,8 +489,8 @@ sp3_h_8        211      2   .4075829          0         1  Fever Type
 sp3_h_8_gi~n   124      1          0          0         0  Fever Type
 sp3_h_9        211      2   .2037915          0         1  Family TB
 sp3_h_9_gi~n   168      1          0          0         0  Family TB
-sp3_h_10       211      2   .0663507          0         1  Family or Family with Si...
-sp3_h_10_g~n   197      1          0          0         0  Family or Family with Si...
+sp3_h_10       211      2   .0663507          0         1  Family or Family with Similar Symptoms
+sp3_h_10_g~n   197      1          0          0         0  Family or Family with Similar Symptoms
 sp3_h_11       211      2   .1184834          0         1  Chest Pain
 sp3_h_11_g~n   186      1          0          0         0  Chest Pain
 sp3_h_12       211      2   .3696682          0         1  Loss of Appetite
@@ -515,12 +515,12 @@ sp3_h_21       211      2   .1611374          0         1  Children in Family
 sp3_h_21_g~n   176      1          0          0         0  Children in Family
 sp3_h_22       211      2   .5260664          0         1  Age
 sp3_h_22_g~n   100      1          0          0         0  Age
-sp3_h_23       129      2   .0697674          0         1  Provider Recorded Inform...
+sp3_h_23       129      2   .0697674          0         1  Provider Recorded Information
 sp3_h_24       211      2   .4170616          0         1  Other questions were asked
 sp3_h_24_1      87     81          .          .         .  Other question asked 1
 sp3_h_24_2       0      0          .          .         .  Other question asked 2
 sp3_spur_1     211      2    .985782          0         1  SP brought a sputum report
-sp3_spur_2     211      2   .0094787          0         1  Provider Made Photocopy ...
+sp3_spur_2     211      2   .0094787          0         1  Provider Made Photocopy of Results
 sp4_checkl~t   374     14   .3844393          0         1  
 sp4_h_1        374      2   .9037433          0         1  Duration of Cough
 sp4_h_1_gi~n    36      1          0          0         0  Duration of Cough
@@ -528,24 +528,24 @@ sp4_h_2        374      2   .7352941          0         1  Sputum
 sp4_h_2_gi~n    99      1          0          0         0  Sputum
 sp4_h_3        373      2   .0911528          0         1  Saw Sputum Results
 sp4_h_3_gi~n   339      1          0          0         0  Saw Sputum Results
-sp4_h_4        374      2   .3930481          0         1  Medication Taken Last Mo...
-sp4_h_4_gi~n   226      1          0          0         0  Medication Taken Last Mo...
-sp4_h_5        374      2   .1149733          0         1  Visited Governmental Hos...
-sp4_h_5_gi~n   329      1          0          0         0  Visited Governmental Hos...
-sp4_h_6        374      2   .1550802          0         1  Treatment for Previous I...
-sp4_h_6_gi~n   316      1          0          0         0  Treatment for Previous I...
-sp4_h_7        374      2   .1497326          0         1  Sputum or X-Rays Done fo...
-sp4_h_7_gi~n   317      2   .0031546          0         1  Sputum or X-Rays Done fo...
-sp4_h_8        374      2   .1657754          0         1  Diagnosis Given by Gover...
-sp4_h_8_gi~n   312      2   .0032051          0         1  Diagnosis Given by Gover...
+sp4_h_4        374      2   .3930481          0         1  Medication Taken Last Month for Present Illness
+sp4_h_4_gi~n   226      1          0          0         0  Medication Taken Last Month for Present Illness
+sp4_h_5        374      2   .1149733          0         1  Visited Governmental Hospital for Previous Illness
+sp4_h_5_gi~n   329      1          0          0         0  Visited Governmental Hospital for Previous Illness
+sp4_h_6        374      2   .1550802          0         1  Treatment for Previous Illness
+sp4_h_6_gi~n   316      1          0          0         0  Treatment for Previous Illness
+sp4_h_7        374      2   .1497326          0         1  Sputum or X-Rays Done for Previous Illness
+sp4_h_7_gi~n   317      2   .0031546          0         1  Sputum or X-Rays Done for Previous Illness
+sp4_h_8        374      2   .1657754          0         1  Diagnosis Given by Governmental Hospital
+sp4_h_8_gi~n   312      2   .0032051          0         1  Diagnosis Given by Governmental Hospital
 sp4_h_9        374      2    .315508          0         1  Past TB Treatment
 sp4_h_9_gi~n   255      2   .0078431          0         1  Past TB Treatment
-sp4_h_10       374      2   .6925134          0         1  For How Long Past TB Tre...
-sp4_h_10_g~n   115      1          0          0         0  For How Long Past TB Tre...
+sp4_h_10       374      2   .6925134          0         1  For How Long Past TB Treatment
+sp4_h_10_g~n   115      1          0          0         0  For How Long Past TB Treatment
 sp4_h_11       374      2    .526738          0         1  Reason for Stopping
 sp4_h_11_g~n   177      1          0          0         0  Reason for Stopping
-sp4_h_12       374      2    .368984          0         1  Previous Treatment Medic...
-sp4_h_12_g~n   236      1          0          0         0  Previous Treatment Medic...
+sp4_h_12       374      2    .368984          0         1  Previous Treatment Medical Records
+sp4_h_12_g~n   236      1          0          0         0  Previous Treatment Medical Records
 sp4_h_13       374      2   .1336898          0         1  Blood in Sputum
 sp4_h_13_g~n   324      1          0          0         0  Blood in Sputum
 sp4_h_14       373      2   .2439678          0         1  Cough Throughout Day
@@ -576,18 +576,18 @@ sp4_h_26       374      2   .0775401          0         1  Diabetes
 sp4_h_26_g~n   345      1          0          0         0  Diabetes
 sp4_h_27       374      2    .026738          0         1  HIV/AIDS
 sp4_h_27_g~n   364      1          0          0         0  HIV/AIDS
-sp4_h_28       374      2   .0588235          0         1  High Blood Pressure or H...
-sp4_h_28_g~n   352      2   .0028409          0         1  High Blood Pressure or H...
+sp4_h_28       374      2   .0588235          0         1  High Blood Pressure or Hypertension
+sp4_h_28_g~n   352      2   .0028409          0         1  High Blood Pressure or Hypertension
 sp4_h_29       374      2    .171123          0         1  Presence of Children
 sp4_h_29_g~n   309      1          0          0         0  Presence of Children
 sp4_h_30       373      2   .4530831          0         1  Age
 sp4_h_30_g~n   204      2   .1078431          0        22  Age
-sp4_h_31       374      2   .1176471          0         1  Provider Recorded Inform...
+sp4_h_31       374      2   .1176471          0         1  Provider Recorded Information
 sp4_h_32       374      2   .3796791          0         1  Other questions were asked
 sp4_h_32_1     143    124          .          .         .  Other question asked 1
 sp4_h_32_2       8      8          .          .         .  Other question asked 2
 sp4_spur1      295      2   .1220339          0         1  SP brought a sputum report
-sp4_spur2      295      2   .0033898          0         1  Provider Made Photocopy ...
+sp4_spur2      295      2   .0033898          0         1  Provider Made Photocopy of Results
 sp7_h_0        645      2   .2077519          0         1  Sputum
 sp7_h_0_gi~n   503      1          0          0         0  Sputum
 sp7_h_1        645      2   .8496124          0         1  Breathing Difficulty
@@ -628,8 +628,8 @@ sp7_h_18       645      2   .0806202          0         1  Childhood Illnesses
 sp7_h_18_g~n   593      1          0          0         0  Childhood Illnesses
 sp7_h_19       645      2   .1302326          0         1  Night Sweats
 sp7_h_19_g~n   561      1          0          0         0  Night Sweats
-sp7_h_20       645      2   .5922481          0         1  Throat or Upper Respirat...
-sp7_h_20_g~n   263      1          0          0         0  Throat or Upper Respirat...
+sp7_h_20       645      2   .5922481          0         1  Throat or Upper Respiratory Problems
+sp7_h_20_g~n   263      1          0          0         0  Throat or Upper Respiratory Problems
 sp7_h_21       645      2   .3069767          0         1  Smoking
 sp7_h_21_g~n   447      1          0          0         0  Smoking
 sp7_h_22       645      2   .3627907          0         1  Occupation
@@ -640,7 +640,7 @@ sp7_h_24       645      2   .0620155          0         1  Medicine Allergies
 sp7_h_24_g~n   605      1          0          0         0  Medicine Allergies
 sp7_h_25       644      2   .1381988          0         1  Taking Other Medication
 sp7_h_25_g~n   557      1          0          0         0  Taking Other Medication
-sp7_h_26       642      2   .0934579          0         1  Provider Recorded Inform...
+sp7_h_26       642      2   .0934579          0         1  Provider Recorded Information
 sp7_h_27       640      2   .4796875          0         1  Other questions were asked
 sp7_h_27_1       2      1          0          0         0  Other question asked 1
 sp7_h_27_2       0      0          .          .         .  Other question asked 2
@@ -686,4 +686,4 @@ time_total    2199    192   37.68713       -439       715  Time in Clinic (min)
 time_waiting  2194   1628   33.41125  -451.3667  710.6667  Time Waiting (min)
 uatbc_faci~e   503    144   242128.8     113103    325222  Parent Agency Id
 uatbc_prov~d   469    149   213883.4     103242    325222  Agency Id
---------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------

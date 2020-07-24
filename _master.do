@@ -4,6 +4,7 @@
  
 	global rawdata "/Users/RuchikaBhatia/Box/Ruchika Mumbai Hospital/sp"
 	global directory "/Users/RuchikaBhatia/GitHub/mumbai-ppia"
+	global rawdata_gx "/Users/RuchikaBhatia/Box/Ruchika Mumbai Hospital/xpert-lab/Genexpert/Genexpert_dta"
 	
 	global title justification(left) color(black) span pos(11)
 
@@ -82,12 +83,17 @@ sysdir set PLUS "${directory}/ado/"
 	run "$directory/code/table2.do"
 	run "$directory/code/table3.do"
 	run "$directory/code/table4.do"
-	run "$directory/code/table5a.do"
-	run "$directory/code/table5b.do"
-	run "$directory/code/table5c.do"
-	run "$directory/code/table5d.do"
+	run "$directory/code/table5.do"
+	run "$directory/code/table6.do"
 	run "$directory/code/tableA1.do"
 	run "$directory/code/tableA2.do"
+	run "$directory/code/tableA3.do"
+	run "$directory/code/tableA4.do"
+	run "$directory/code/tableA5.do"
+	run "$directory/code/tableA6.do"
+	run "$directory/code/lab_tests.do"
+	
+//------------------------------------------------------------------------------
 	
 	
 	

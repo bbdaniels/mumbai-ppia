@@ -71,184 +71,105 @@
 	
 save "${directory}/constructed/analysis-panel.dta" , replace
 
-	
+// Dataset for baseline balance ------------------------------------------------------------------------------
 
-	//Create Dataset for Learning Effects Diff in Diff --------------------------------------------------------------------------
-	
-	use "${directory}/constructed/analysis-panel.dta", clear
-	
-	drop if wave == 2
-	
-	keep if qutub_sample == 2 // keep only PPIA sample 
-	
-	gen d_treat = ppia_provider_0 == 1 // Dummy for PPIA provider
-	lab var d_treat "PPIA provider"
-    lab val d_treat yesno
+	use "${directory}/constructed/analysis-panel.dta" , clear
+	keep if wave == 0 
+	replace ppia_provider_0 = 0 if ppia_provider_0 == .
+	save "$directory/constructed/baseline.dta", replace 
 
-	// Dummy for whether treatment received in the round
-	gen d_treatXpost =  d_treat * wave 
-    lab var d_treatXpost "PPIA status in round 2"
-    lab val d_treatXpost yesno
+// Dataset for global learning -------------------------------------------------------------------------------
+	use "${directory}/constructed/analysis-panel.dta" , clear
+	gen pxh = qutub_id != qutub_id_provider // PPIA providers 
 	
-	save "$directory/constructed/did_learning.dta", replace 
-	
-//----------------------------------------------------------------------------
-
-	// Create Dataset for Convenience Effect Diff in Diff
-	
-	use "${directory}/constructed/analysis-panel.dta", clear
-	  drop if wave == 2 
-	  
-	  drop if qutub_sample == 1 //drop apple hubs 
-	 
-	  keep if qutub_id != qutub_id_provider //keep only PPIA providers
-	  
-	  //keep PPIA providers present in NNL hubs in either of the rounds
-	  forv w = 0/1 {
-		forv s = 2/3 {
-			gen type`s' = qutub_sample == `s' if wave == `w'
-			bys qutub_id_provider : egen type`s'_`w' = max(type`s')
-			replace type`s'_`w' = 0 if type`s'_`w' == .
-			drop type`s'
-			}
-	  }
-	  
-	keep if ((type2_0 == 1 & (type3_0 == 1 | type3_1 == 1)) | ///
-			(type3_0 == 1 & (type3_0 == 1 | type3_1 == 1)))
-	
-	//group facilities according to ppia status in the 2 rounds
-	egen type = group(ppia_facility_0 ppia_facility_1), label 
-	
-	forv i = 2/3{
-		gen d_type`i' = type == `i' //Dummy for facility type
-		//Dummy for interaction of facility type and wave 
-		gen d_type`i'_wave = type == `i' & wave == 1 
+	//Dummy variables for wave and PPIA provider in current round 
+	forv i = 1/2{
+		gen wave_`i' = wave == `i' 
+		gen pxh_w`i' = pxh * wave_`i' 
 	}
 	
-	save "$directory/constructed/did_convenience.dta", replace 
+	label var wave_1 "Wave 1"
+	label var wave_2 "Wave 2"
+	label var pxh_w1 "PPIA provider in wave 1"
+	label var pxh_w2 "PPIA provider in wave 2"
 	
+	egen type = group(wave pxh), label 
+	
+	save "$directory/constructed/global_learning", replace 
+	
+// Dataset for learning in PPIA providers -------------------------------------------------------------------------------
+	
+	use "${directory}/constructed/analysis-panel.dta" , clear
+	
+	keep if qutub_sample < 3 // Keep only PPIA and Apple Hubs 
+	
+	gen pxh = qutub_id != qutub_id_provider // Known PPIA providers
+	keep if pxh == 1 
+	label var pxh "Known PPIA Provider"
+	
+	gen treat = ppia_provider_0 == 1 & wave == 1 
+	label var treat "PPIA provider in wave 1"
+	gen treat_2 = ppia_provider_0 == 1 & wave == 2
+	label var treat "PPIA provider in wave 2 "
+	
+	save "$directory/constructed/learning.dta", replace 
+	
+// Dataset for global convenience effect  -------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------
+	use "${directory}/constructed/analysis-panel.dta" , clear
+	gen pxh = qutub_id != qutub_id_provider // Known PPIA providers
+	keep if pxh == 1 
+	label var pxh "Known PPIA Provider"
 	
-	// Create Dataset for Learning Effect Reg. Discontinuity
+	gen engaged = 0 // Facility PPIA status in current round
+	forv i = 0/2 {
+		replace engaged = 1 if ppia_facility_`i' == 1 & wave == `i'
+	}
+	label var engaged "Facility PPIA status in current round"
 	
-	use "${directory}/constructed/analysis-panel.dta", clear
+	egen type = group(wave engaged), label 
+
+	save "${directory}/constructed/global_convenience.dta", replace 
+	
+// Dataset for convenience effect for specific PPIA providers from R1 to R2 -------------------------------------------------------------------------------
+
+	use "${directory}/constructed/analysis-panel.dta" , clear
+	
+	gen pxh = qutub_id != qutub_id_provider // Known PPIA providers
+	keep if pxh == 1 
+	label var pxh "Known PPIA Provider"
+	
+	keep if wave < 2
+	
+	gen engaged = 0
+	forv i = 0/1 {
+		replace engaged = 1 if ppia_facility_`i' == 1 & wave == `i'
+	}
+	label var engaged "Facility PPIA status in current round"
+	
+	egen type = group(ppia_facility_0 ppia_facility_1), label 
+	egen group = group(wave type), label 
+	
+	save "$directory/constructed/ppia_convenience.dta", replace 
+	
+	
+// Dataset for ppsa hubs in round 3 - regression discontinuity -------------------------------------------------------------------------------
+
+	use "${directory}/constructed/analysis-panel.dta" , clear
+	
+	gen engaged = 0 // Facility PPIA status in current round
+	forv i = 0/2 {
+		replace engaged = 1 if ppia_facility_`i' == 1 & wave == `i'
+	}
 	
 	keep if wave == 2
 	
-	keep if ppsa_rd == 1 // Keep only PPSA Sample 
-	
-	gen case2 = case == 2 //Dummy for cases 
+	gen case2 = case == 2 //Dummy variables for cases 
 	gen case3 = case ==3 
 	gen case4 = case==4
 	
-	
-	save "$directory/constructed/reg_discontinuity_learning.dta", replace
+	save "$directory/constructed/reg_discontinuity.dta", replace 
 
-//----------------------------------------------------------------------------
-
-	//Dataset for PPIA leaving NNL facilities in round 3
-	
-	use "${directory}/constructed/analysis-panel.dta", clear
-	
-	drop if wave == 0
-	  
-	  keep if qutub_sample == 2 | qutub_sample == 3  //drop apple hubs 
-	  
-	  keep if qutub_id != qutub_id_provider // only PPIA providers
-	  
-	  //keep PPIA providers present in NNL hubs in either round 2 or 3 
-	  
-	  forv w = 1/2 {
-		forv s = 2/3 {
-			gen type`s' = qutub_sample == `s' if wave == `w'
-			bys qutub_id_provider : egen type`s'_`w' = max(type`s')
-			replace type`s'_`w' = 0 if type`s'_`w' == .
-			drop type`s'
-			}
-	  }
-	  
-	  keep if ((type2_1 == 1 & (type3_1 == 1 | type3_2 == 1)) ///
-			  | (type2_2 == 1 & (type3_1 == 1 | type3_2 == 1)))
-			 
-	egen type = group(qutub_sample ppia_facility_1 ppia_facility_2), label
-	
-	forv i = 1/5 {
-		gen d_type`i' = type == `i' //Dummy for facility type
-		//Dummy for interaction of facility type and wave 
-		gen d_type`i'_wave = type == `i' & wave == 2
-	}
-	
-	drop d_type5 d_type5_wave // drop comparison group : NNL hubs that remained in PPIA in round 3
-	
-	save "$directory/constructed/did_convenience2.dta", replace 
-	
-//----------------------------------------------------------------------------
- 
- // Dataset for pooled treatment effect on PPIA joining apple hubs 
- 
-	use "${directory}/constructed/analysis-panel.dta", clear
-	
-	keep if qutub_sample == 1 | qutub_sample == 2 //drop NNL hubs
-	drop if wave == 2 // drop round 3
-	
-	egen type = group(qutub_sample ppia_facility_0 ppia_facility_1), label
-	
-	gen d_treat = (ppia_facility_0 == 1 & wave == 0)| (ppia_facility_1 == 1 & wave == 1) // hub considered treated in a round if its a part of PPIA network in that round 
-	
-	gen d_type2 = type == 2 
-	gen d_type3 = type == 3
-	
-	save "$directory/constructed/apple_part1.dta", replace 
-	
-//----------------------------------------------------------------------------
-	
-	// Dataset for pooled treatment effect on PPIA leaving apple hubs and PPIA hubs
-	
-	use "${directory}/constructed/analysis-panel.dta", clear
-	drop if wave == 0 // keep round 2 and 3
-	keep if qutub_sample == 1 | qutub_sample == 2 // drop NNL hubs
-	
-	egen type = group(qutub_sample ppia_facility_1 ppia_facility_2), label
-	
-	gen d_treat = (ppia_facility_1 == 0 & wave == 1)| (ppia_facility_2 == 0 & wave == 2) // hub considered treated if its not a part of PPIA network in that round 
-	 
-	 forv i = 2/5{
-		gen d_type`i' = type == `i'
-	 }
-	 
-	 save "$directory/constructed/apple_part2.dta", replace 
-	 
-	 //----------------------------------------------------------------------------
-	 
-	 //Dataset for diff in diff b/w PPIA hubs and Non-PPIA apple hubs from round 1 to 2
-	 
-	use "${directory}/constructed/analysis-panel.dta", clear
-	drop if wave == 2 // drop round 3
-	keep if qutub_sample == 1| qutub_sample == 2 // drop NNL hubs 
-	
-	egen type = group(ppia_facility_0 ppia_facility_1), label
-	drop if type == 2 // drop PPIA joining apple hubs
-	
-	gen d_type3 = type == 3
-	gen d_type3_wave = d_type3 * wave
-	
-	save "$directory/constructed/apple_part3.dta", replace 
-	
-//----------------------------------------------------------------------------
-	 
-	 //Dataset for diff in diff b/w PPIA hubs that leave the network in round 3 and pure apple hubs 
-
-	use "${directory}/constructed/analysis-panel.dta", clear
-	drop if wave == 0 // drop round 1 
-	keep if qutub_sample == 1| qutub_sample == 2 // drop NNL hubs
-	egen type = group(qutub_sample ppia_facility_1 ppia_facility_2), label
-	
-	keep if type == 1 | type == 4 // keep only pure apple hubs and PPIA hubs that leave network in round 3
-	
-	gen d_treat = type == 4 & wave == 2
-	
-	save "$directory/constructed/apple_part4.dta", replace 
-	
+// -----------------------------------------------------------------------------
 	
 	

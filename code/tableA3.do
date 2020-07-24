@@ -1,10 +1,10 @@
 
 	
-	//Case interactions for Non-PPIA providers and PPIA providers across rounds
+ //Case interactions for known providers in Apple hubs and PPIA hubs across rounds
+ 
+	use "$directory/constructed/learning.dta", clear 
 	
-	use "$directory/constructed/global_learning", clear 
-	
-	egen group = group(pxh wave), label 
+	egen group = group(qutub_sample wave)
 	
 	tabcount case group, v1(1/4) v2(1/6) zero matrix(a1) //Save tabcount in matrix
 	
@@ -12,7 +12,7 @@
 	mata : st_matrix("coltot1", colsum(st_matrix("a1")))
 	mat b1 = a1\coltot1 
 	
-	putexcel set "${directory}/outputs/appendix.xlsx", sheet(2) modify  
+	putexcel set "${directory}/outputs/appendix.xlsx", sheet(3) modify
 	
 	putexcel D7 = matrix(b1)
 	
@@ -30,6 +30,7 @@
 	putexcel H6 = "Round 2"
 	putexcel I6 = "Round 3"
 	
-	putexcel D5:F5 = "Non-PPIA Providers", bold hcenter merge
-	putexcel G5:I5 = "PPIA Providers", bold hcenter merge 
+	putexcel D5:F5 = "Apple Hubs", bold hcenter merge
+	putexcel G5:I5 = "PPIA Hubs", bold hcenter merge 
 	
+	putexcel E3:G3 = "For known PPIA providers", bold hcenter merge 
