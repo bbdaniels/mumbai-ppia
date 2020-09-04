@@ -5,18 +5,22 @@ global box "/users/bbdaniels/Box/Qutub/MUMBAI/"
 
 // Install adofiles and other support
 
-  
+  sysdir set PLUS "${git}/ado/"
+
+  ssc install iefieldkit , replace
 
 // Get data from Box (finalize before publication)
 
   foreach file in ///
     master-facilities master-providers master-interactions ///
     wave-0 wave-1 wave-2 {
-
-    copy "${box}/data/deidentified/`file'.dta" ///
-      "${git}/data/`file'.dta" , replace
-      
+      copy "${box}/data/deidentified/`file'.dta" ///
+        "${git}/data/`file'.dta" , replace
   }
+  
+  // Get metadata
+  copy "${box}/data/metadata/deidentified/all.xlsx" ///
+    "${git}/data/append-metadata.xlsx" , replace
 
 // Project settings
 
