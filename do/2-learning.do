@@ -1,13 +1,13 @@
-use "${git}/constructed/full-data.dta" , clear
-gen treat = pxh == 1 & wave > 0
-      lab var treat "PPIA After Round 1"
-gen treat2 = pxh == 1 & wave > 1
-      lab var treat2 "PPIA After Round 2"
+use "${git}/constructed/full-data.dta" ///
+  if case < 7 , clear
+
+// Define treatment effect for regressions
+  gen treat = pxh == 1 & wave > 0
+    lab var treat "PPIA After Round 1"
       
 // Global
 areg re_4 treat pxh ///
   i.wave i.sample##i.case ///
-  if  case < 7 ///
   , a(cp_4) cl(cp_7)
   
   est sto g1
@@ -15,7 +15,6 @@ areg re_4 treat pxh ///
   forest areg ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  if case < 7 ///
   , t(treat) c(pxh i.wave i.sample##i.case) ///
     a(cp_4) cl(cp_7) b bh
     
@@ -25,7 +24,6 @@ areg re_4 treat pxh ///
     // No sample-case interaction
     areg re_4 treat pxh i.wave ///
       i.case ///
-      if case < 7 ///
       , a(cp_4) cl(cp_7)
       
       est sto g2
@@ -33,7 +31,6 @@ areg re_4 treat pxh ///
     // Case-wave interaction
     areg re_4 treat pxh i.wave ///
       i.wave##i.case i.sample##i.case ///
-      if case < 7 ///
       , a(cp_4) cl(cp_7)
       
       est sto g3
@@ -41,7 +38,6 @@ areg re_4 treat pxh ///
     // Facility clustering
     areg re_4 treat pxh i.wave ///
       i.sample##i.case ///
-      if case < 7 ///
       , a(cp_4) cl(cp_4)
       
       est sto g4
@@ -49,7 +45,6 @@ areg re_4 treat pxh ///
     // No FE
     reg re_4 treat pxh i.wave ///
       i.sample##i.case ///
-      if case < 7 ///
       , cl(cp_7)
       
       est sto g5
@@ -61,7 +56,7 @@ areg re_4 treat pxh ///
 // Diff-diff
 areg re_4 treat pxh i.wave ///
   i.sample##i.case ///
-  if wave < 2 & case < 7 ///
+  if wave < 2  ///
   , a(cp_4) cl(cp_7)
   
   est sto g1
@@ -69,7 +64,7 @@ areg re_4 treat pxh i.wave ///
   forest areg ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  if wave < 2 & case < 7 ///
+  if wave < 2  ///
   , t(treat) c(pxh wave i.wave i.sample##i.case) ///
     a(cp_4) cl(cp_7)
     
@@ -79,7 +74,7 @@ areg re_4 treat pxh i.wave ///
     // No sample-case interaction
     areg re_4 treat pxh i.wave ///
       i.case ///
-      if wave < 2 & case < 7 ///
+      if wave < 2  ///
       , a(cp_4) cl(cp_7)
       
       est sto g2
@@ -87,7 +82,7 @@ areg re_4 treat pxh i.wave ///
     // Case-wave interaction
     areg re_4 treat pxh i.wave ///
       i.wave##i.case i.sample##i.case ///
-      if wave < 2 & case < 7 ///
+      if wave < 2  ///
       , a(cp_4) cl(cp_7)
       
       est sto g3
@@ -95,7 +90,7 @@ areg re_4 treat pxh i.wave ///
     // Facility clustering
     areg re_4 treat pxh i.wave ///
       i.sample##i.case ///
-      if wave < 2 & case < 7 ///
+      if wave < 2  ///
       , a(cp_4) cl(cp_4)
       
       est sto g4
@@ -103,7 +98,7 @@ areg re_4 treat pxh i.wave ///
     // No FE
     reg re_4 treat pxh i.wave ///
       i.sample##i.case ///
-      if wave < 2 & case < 7 ///
+      if wave < 2  ///
       , cl(cp_7)
       
       est sto g5
@@ -115,11 +110,11 @@ areg re_4 treat pxh i.wave ///
 // Global, separate waves
 replace treat = 0 if wave == 2
   lab var treat "PPIA In Round 1"
+gen treat2 = pxh == 1 & wave > 1
   lab var treat2 "PPIA In Round 2"
   
 areg re_4 treat treat2 pxh ///
   i.wave i.sample##i.case ///
-  if  case < 7 ///
   , a(cp_4) cl(cp_7)
   
   est sto g1
@@ -128,7 +123,6 @@ areg re_4 treat treat2 pxh ///
     // No sample-case interaction
     areg re_4 treat treat2 pxh i.wave ///
       i.case ///
-      if case < 7 ///
       , a(cp_4) cl(cp_7)
       
       est sto g2
@@ -136,7 +130,6 @@ areg re_4 treat treat2 pxh ///
     // Case-wave interaction
     areg re_4 treat treat2 pxh i.wave ///
       i.wave##i.case i.sample##i.case ///
-      if case < 7 ///
       , a(cp_4) cl(cp_7)
       
       est sto g3
@@ -144,7 +137,6 @@ areg re_4 treat treat2 pxh ///
     // Facility clustering
     areg re_4 treat treat2 pxh i.wave ///
       i.sample##i.case ///
-      if case < 7 ///
       , a(cp_4) cl(cp_4)
       
       est sto g4
@@ -152,7 +144,6 @@ areg re_4 treat treat2 pxh ///
     // No FE
     reg re_4 treat treat2 pxh i.wave ///
       i.sample##i.case ///
-      if case < 7 ///
       , cl(cp_7)
       
       est sto g5
