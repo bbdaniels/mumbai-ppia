@@ -9,13 +9,8 @@
 
   merge m:1 cp_4 using "${git}/data/master-facilities.dta" , keep(3) nogen
   merge m:1 cp_7 using "${git}/data/master-providers.dta" , keep(1 3) nogen
-
-  save "${git}/constructed/full-data.dta" , replace
-  iecodebook export using "${git}/constructed/full-data.xlsx" , replace
   
 // Create new variables and make data corrections
-
-  use "${git}/constructed/full-data.dta" , clear
   
   // Correct prices in yes/no field
   replace re_1 = 1 if re_1 > 1 & !missing(re_1)
@@ -29,5 +24,17 @@
   anycat med_k_ med_l_
   gen med_any = med > 0
     lab var med_any "Any Medication"
+    
+  // More friendly IDs
+  gen fid = cp_4
+    lab var fid "Facility ID"
+  gen pid = cp_7
+    lab var pid "Provider ID"
+    
+    order pid fid, first
+    
+  // Save
+  save "${git}/constructed/full-data.dta" , replace
+    iecodebook export using "${git}/constructed/full-data.xlsx" , replace
       
 // End of dofile

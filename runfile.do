@@ -8,6 +8,8 @@ global box "/users/bbdaniels/Box/Qutub/MUMBAI/"
   sysdir set PLUS "${git}/ado/"
 
   ssc install iefieldkit , replace
+  net install forest, from(https://github.com/bbdaniels/stata/raw/master/)
+  net install outwrite, from(https://github.com/bbdaniels/stata/raw/master/)
 
 // Get data from Box (finalize before publication)
 
