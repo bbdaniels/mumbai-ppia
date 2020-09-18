@@ -72,9 +72,9 @@ use "${git}/constructed/full-data.dta" , clear
     (scatter place r1 if pxh1 == 0 , mc(black)) ///
     (scatter place r2 if pxh2 == 0 , mc(black)) ///
     (scatter place r3 if pxh3 == 0 , mc(black)) ///
-    (scatter place r1 if pxh1 == 1, mc(red) m(T)) ///
-    (scatter place r2 if pxh2 == 1, mc(red) m(T)) ///
-    (scatter place r3 if pxh3 == 1, mc(red) m(T)) ///
+    (scatter place r1 if pxh1 == 1 , mc(red) m(T)) ///
+    (scatter place r2 if pxh2 == 1 , mc(red) m(T)) ///
+    (scatter place r3 if pxh3 == 1 , mc(red) m(T)) ///
     (scatter place r1 if pxh1 == . , m(S) mc(gray)) ///
     (scatter place r2 if pxh2 == . , m(S) mc(gray)) ///
     (scatter place r3 if pxh3 == . , m(S) mc(gray)) ///
