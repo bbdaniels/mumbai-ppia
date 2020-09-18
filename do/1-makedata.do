@@ -21,7 +21,8 @@
     replace cp_7 = cp_4 if cp_7 == ""
 
   // Create new variables for medication indicators
-  anycat med_k_ med_l_
+  lab def med_l 1 "Anti-TB Medication" 3 "Other Antibiotic" , modify
+  anycat med_k_ med_l_ , shortlabel
   gen med_any = med > 0
     lab var med_any "Any Medication"
     
