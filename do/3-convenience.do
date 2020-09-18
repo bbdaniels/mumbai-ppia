@@ -13,7 +13,7 @@ gen treat = ppia == 1 & wave > 0
 // Global
 areg re_4 treat ppia ///
   i.wave i.sample##i.case ///
-  , a(fid) cl(fid)
+  , a(pid) cl(fid)
   
   est sto g1
 
@@ -21,7 +21,7 @@ areg re_4 treat ppia ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
   , t(treat) c(ppia i.wave i.sample##i.case) ///
-    a(fid) cl(fid) b bh
+    a(pid) cl(fid) b bh
     
     graph export "${git}/outputs/f-convenience-global.eps" , replace
 
@@ -29,21 +29,21 @@ areg re_4 treat ppia ///
     // No sample-case interaction
     areg re_4 treat ppia i.wave ///
       i.case ///
-      , a(fid) cl(fid)
+      , a(pid) cl(fid)
       
       est sto g2
 
     // Case-wave interaction
     areg re_4 treat ppia i.wave ///
       i.wave##i.case i.sample##i.case ///
-      , a(fid) cl(fid)
+      , a(pid) cl(fid)
       
       est sto g3
 
     // Facility clustering
     areg re_4 treat ppia i.wave ///
       i.sample##i.case ///
-      , a(fid) cl(pid)
+      , a(pid) cl(pid)
       
       est sto g4
 
@@ -62,7 +62,7 @@ areg re_4 treat ppia ///
 areg re_4 treat ppia i.wave ///
   i.sample##i.case ///
   if wave < 2  ///
-  , a(fid) cl(fid)
+  , a(pid) cl(fid)
   
   est sto g1
 
@@ -71,7 +71,7 @@ areg re_4 treat ppia i.wave ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
   if wave < 2  ///
   , t(treat) c(ppia wave i.wave i.sample##i.case) ///
-    a(fid) cl(fid)
+    a(pid) cl(fid)
     
     graph export "${git}/outputs/f-convenience-r12.eps" , replace
 
@@ -80,7 +80,7 @@ areg re_4 treat ppia i.wave ///
     areg re_4 treat ppia i.wave ///
       i.case ///
       if wave < 2  ///
-      , a(fid) cl(fid)
+      , a(pid) cl(fid)
       
       est sto g2
 
@@ -88,7 +88,7 @@ areg re_4 treat ppia i.wave ///
     areg re_4 treat ppia i.wave ///
       i.wave##i.case i.sample##i.case ///
       if wave < 2  ///
-      , a(fid) cl(fid)
+      , a(pid) cl(fid)
       
       est sto g3
 
@@ -96,7 +96,7 @@ areg re_4 treat ppia i.wave ///
     areg re_4 treat ppia i.wave ///
       i.sample##i.case ///
       if wave < 2  ///
-      , a(fid) cl(pid)
+      , a(pid) cl(pid)
       
       est sto g4
 
@@ -120,7 +120,7 @@ gen treat2 = ppia == 1 & wave > 1
   
 areg re_4 treat treat2 ppia ///
   i.wave i.sample##i.case ///
-  , a(fid) cl(fid)
+  , a(pid) cl(fid)
   
   est sto g1
 
@@ -128,21 +128,21 @@ areg re_4 treat treat2 ppia ///
     // No sample-case interaction
     areg re_4 treat treat2 ppia i.wave ///
       i.case ///
-      , a(fid) cl(fid)
+      , a(pid) cl(fid)
       
       est sto g2
 
     // Case-wave interaction
     areg re_4 treat treat2 ppia i.wave ///
       i.wave##i.case i.sample##i.case ///
-      , a(fid) cl(fid)
+      , a(pid) cl(fid)
       
       est sto g3
 
     // Facility clustering
     areg re_4 treat treat2 ppia i.wave ///
       i.sample##i.case ///
-      , a(fid) cl(pid)
+      , a(pid) cl(pid)
       
       est sto g4
 
@@ -156,5 +156,4 @@ areg re_4 treat treat2 ppia ///
   outwrite g1 g2 g3 g4 g5 ///
     using "${git}/outputs/t-convenience-global2.xlsx" ///
   , replace drop(i.wave#i.case i.sample i.sample#i.case) format(%9.3f) stats(N r2)
-  
--
+ 
