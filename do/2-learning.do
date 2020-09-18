@@ -1,3 +1,4 @@
+// Global
 use "${git}/constructed/full-data.dta" ///
   if case < 7 , clear
 
@@ -5,7 +6,6 @@ use "${git}/constructed/full-data.dta" ///
   gen treat = pxh == 1 & wave > 0
     lab var treat "PPIA After Round 1"
       
-// Global
 areg re_4 treat pxh ///
   i.wave i.sample##i.case ///
   , a(fid) cl(pid) 
@@ -54,6 +54,13 @@ areg re_4 treat pxh ///
   , replace drop(i.wave#i.case i.sample i.sample#i.case) format(%9.3f) stats(N r2)
   
 // Diff-diff
+use "${git}/constructed/full-data.dta" ///
+  if case < 7 , clear
+
+  // Define treatment effect for regressions
+  gen treat = pxh == 1 & wave > 0
+    lab var treat "PPIA After Round 1"
+    
 areg re_4 treat pxh i.wave ///
   i.sample##i.case ///
   if wave < 2  ///
@@ -108,12 +115,15 @@ areg re_4 treat pxh i.wave ///
        , replace drop(i.wave#i.case i.sample i.sample#i.case) format(%9.3f) stats(N r2)
        
 // Global, separate waves
-replace treat = 0 if wave == 2
-  lab var treat "PPIA In Round 1"
-gen treat2 = pxh == 1 & wave > 1
-  lab var treat2 "PPIA In Round 2"
+use "${git}/constructed/full-data.dta" ///
+  if case < 7 , clear
   
-areg re_4 treat treat2 pxh ///
+gen treat1 = (pxh == 1 & wave == 1)
+  lab var treat1 "PPIA In Round 2"
+gen treat2 = (pxh == 1 & wave == 2)
+  lab var treat2 "PPIA In Round 3"
+  
+areg re_4 treat1 treat2 pxh ///
   i.wave i.sample##i.case ///
   , a(fid) cl(pid)
   
@@ -121,28 +131,28 @@ areg re_4 treat treat2 pxh ///
 
   // Alt versions
     // No sample-case interaction
-    areg re_4 treat treat2 pxh i.wave ///
+    areg re_4 treat1 treat2 pxh i.wave ///
       i.case ///
       , a(fid) cl(pid)
       
       est sto g2
 
     // Case-wave interaction
-    areg re_4 treat treat2 pxh i.wave ///
+    areg re_4 treat1 treat2 pxh i.wave ///
       i.wave##i.case i.sample##i.case ///
       , a(fid) cl(pid)
       
       est sto g3
 
     // Facility clustering
-    areg re_4 treat treat2 pxh i.wave ///
+    areg re_4 treat1 treat2 pxh i.wave ///
       i.sample##i.case ///
       , a(fid) cl(fid)
       
       est sto g4
 
     // No FE
-    reg re_4 treat treat2 pxh i.wave ///
+    reg re_4 treat1 treat2 pxh i.wave ///
       i.sample##i.case ///
       , cl(pid)
       
