@@ -23,11 +23,14 @@ use "${git}/constructed/full-data.dta" ///
       title("PPIA Enrollment in Round 3 by Rank")
       
     graph save "${git}/outputs/f-discontinuity-3.gph" , replace
+    
+  gen cutoff = ppsa_cutoff < 81
+    lab var cutoff "Round 3 Eligibility"
 
   forest reg ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  , t(ppia_facility_2) c(ppsa_cutoff i.wave i.sample##i.case) ///
+  , t(cutoff) c(ppsa_cutoff i.sample##i.case) ///
     cl(fid) b bh graph(title("Linear RD Estimates for Outcomes",span))
     
     graph save "${git}/outputs/f-discontinuity-4.gph" , replace
