@@ -12,14 +12,6 @@ areg re_4 treat pxh ///
   
   est sto g1
 
-  forest areg ///
-    (dr_1 dr_4 re_1 re_3 re_4) ///
-    (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  , t(treat) c(pxh i.wave i.sample##i.case) ///
-    a(fid) cl(pid) b bh
-    
-    graph export "${git}/outputs/f-learning-global.eps" , replace
-
   // Alt versions
     // No sample-case interaction
     areg re_4 treat pxh i.wave ///
@@ -50,7 +42,7 @@ areg re_4 treat pxh ///
       est sto g5
       
   outwrite g1 g2 g3 g4 g5 ///
-    using "${git}/outputs/t-learning-global.xlsx" ///
+    using "${git}/outputs/t-learning-global.tex" ///
   , replace drop(i.wave#i.case i.sample i.sample#i.case) format(%9.3f) stats(N r2)
   
 // Diff-diff

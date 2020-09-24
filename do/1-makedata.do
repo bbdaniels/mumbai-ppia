@@ -26,10 +26,13 @@
   gen med_any = med > 0
     lab var med_any "Any Medication"
     
+  // More friendly labels
+  lab var dr_4 "Referral"
+    
   // More friendly IDs
-  gen fid = cp_4
+  egen fid = group(cp_4)
     lab var fid "Facility ID"
-  gen pid = cp_7
+  egen pid = group(cp_7)
     lab var pid "Provider ID"
     
     order pid fid, first

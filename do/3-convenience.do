@@ -8,20 +8,11 @@ forvalues i = 0/2 {
   replace ppia = 1 if wave == `i' & ppia_facility_`i' == 1
 }
       
-
 areg re_4 ppia ///
   i.wave i.sample##i.case ///
   , a(pid) cl(fid)
   
   est sto g1
-
-  forest areg ///
-    (dr_1 dr_4 re_1 re_3 re_4) ///
-    (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  , t(ppia) c(i.wave i.sample##i.case) ///
-    a(pid) cl(fid) b bh
-    
-    graph export "${git}/outputs/f-convenience-global.eps" , replace
 
   // Alt versions
     // No sample-case interaction
