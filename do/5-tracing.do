@@ -66,9 +66,9 @@ use "${git}/constructed/full-data.dta" , clear
   }
 
   tw ///
-    (rspike r1 r2 place if pxh1 == 0 & pxh2 == 0 , hor lw(thin) lc(gs12)) ///
-    (rspike r3 r2 place if pxh3 == 0 & pxh2 == 0 , hor lw(thin) lc(gs12)) ///
-    (rspike r3 r4 place if pxh3 == 0  , hor lw(thin) lc(gs12)) ///
+    (rspike r1 r2 place if pxh1 == 0 , hor lw(thin) lc(gs12)) ///
+    (rspike r2 r3 place if pxh2 == 0 , hor lw(thin) lc(gs12)) ///
+    (rspike r3 r4 place if pxh3 == 0 , hor lw(thin) lc(gs12)) ///
     (scatter place r1 if pxh1 == 0 , mc(black)) ///
     (scatter place r2 if pxh2 == 0 , mc(black)) ///
     (scatter place r3 if pxh3 == 0 , mc(black)) ///
