@@ -92,7 +92,8 @@ use "${git}/constructed/full-data.dta" , clear
   outwrite global did did1 did2 global2 global3 ///
     using "${git}/outputs/t-learning-global.tex" ///
   , replace drop(i.wave#i.case i.sample i.sample#i.case) format(%9.3f) stats(N r2) ///
-    nobold nolab colnames("Pooled" "Diff-Diff" "Sample 1a (DiD)" "Sample 1a (All)" "Restricted" "Separate") statform(%9.0f %9.4f) ///
+    nobold nolab statform(%9.0f %9.4f) ///
+    colnames("Pooled" "Diff-Diff" "Sample 1a (Diff-Diff)" "Sample 1a (All)" "Restricted" "Separate") ///
     add( ///
       ("Samples" "All" "1a 2a 3" "1a" "1a" "All ex. 4" "All") ///
       ("Rounds" "All" "1 2" "1 2" "All" "All" "All") ///
