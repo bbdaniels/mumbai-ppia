@@ -26,8 +26,13 @@
   gen med_any = med > 0
     lab var med_any "Any Medication"
     
-  // More friendly labels
+  // More friendly variable labels
   lab var dr_4 "Referral"
+  
+  // More friendly value labels
+  lab def case 1 "SP Case 1" 2 "SP Case 2" 3 "SP Case 3" 4 "SP Case 4" , modify
+  lab def wave 0 "Round 1" 1 "Round 2" 2 "Round 3"
+    lab val wave wave
     
   // More friendly IDs
   egen fid = group(cp_4)

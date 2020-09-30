@@ -9,9 +9,9 @@ global box "/users/bbdaniels/Box/Qutub/MUMBAI/"
 
   ssc install iefieldkit , replace
   ssc install rdrobust, replace
-  net install forest, from(https://github.com/bbdaniels/stata/raw/master/)
-  net install outwrite, from(https://github.com/bbdaniels/stata/raw/master/)
-  net install specc, from(https://github.com/bbdaniels/stata/raw/master/)
+  net install forest, from(https://github.com/bbdaniels/stata/raw/master/) replace
+  net install outwrite, from(https://github.com/bbdaniels/stata/raw/master/) replace
+  net install specc, from(https://github.com/bbdaniels/stata/raw/master/) replace
 
 // Get data from Box (finalize before publication)
 
