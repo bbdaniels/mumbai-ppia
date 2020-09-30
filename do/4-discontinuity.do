@@ -4,49 +4,63 @@ use "${git}/constructed/full-data.dta" ///
 
   tab case, gen(case) // Need dummy variables for -rdrobust-
   
-   
-    gen cutoff = ppsa_cutoff < 81
-      lab var cutoff "Round 3 Eligibility"
+  gen cutoff = ppsa_cutoff > 81
+    lab var cutoff "Round 3 Eligibility Loss"
 
-// RD Analysis Figure
- 
-  rdplot re_4 ppsa_cutoff if ppsa_rd == 1 ///
-    , c(81) p(1) ci(95) ///
-      graph_options(title("GeneXpert in Local Sample") ylab(\${pct}) xtit("RD Running Variable")) 
-    
-    graph save "${git}/outputs/f-discontinuity-1.gph" , replace
-    
-  rdplot re_4 ppsa_cutoff ///
-    , c(81) p(1) ci(95) ///
-      graph_options(title("GeneXpert in Global Sample") ylab(\${pct}) xtit("RD Running Variable")) 
-    
-    graph save "${git}/outputs/f-discontinuity-2.gph" , replace
-
-  scatter ppia_facility_2 ppsa_cutoff ///
-    , xline(81) ylab(0 "No" 1 "Yes") mc(black) ///
-      title("PPIA Enrollment in Round 3 by Rank")
+  // Robust estimates
+  
+    rdrobust re_4 ppsa_cutoff if ppsa_rd == 1, c(81) covs(case?) vce(cluster fid) 
+      est sto local
       
-    graph save "${git}/outputs/f-discontinuity-3.gph" , replace
-
-  forest reg ///
-    (dr_1 dr_4 re_1 re_3 re_4) ///
-    (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  , t(cutoff) c(ppsa_cutoff i.sample##i.case) ///
-    cl(fid) b bh graph(title("Linear RD Estimates for Outcomes",span))
+    rdrobust re_4 ppsa_cutoff , c(81) covs(case?) vce(cluster fid) 
+      est sto global
+      
+  // Linear RD estimates
+  
+    gen RD_Estimate = -ppia_facility_2
+      lab var RD_Estimate "Loss of PPIA Eligibility"
     
-    graph save "${git}/outputs/f-discontinuity-4.gph" , replace
-  
-  graph combine ///
-    "${git}/outputs/f-discontinuity-3.gph" ///
-    "${git}/outputs/f-discontinuity-2.gph" ///
-    "${git}/outputs/f-discontinuity-4.gph" ///
-    "${git}/outputs/f-discontinuity-1.gph" ///
-    , altshrink
-  
-  graph export "${git}/outputs/f-discontinuity.eps" , replace
+    reg re_4 RD_Estimate ppsa_cutoff i.sample##i.case , cl(fid)
+      est sto globalreg
 
-// RD Analysis Table
-rdrobust re_4 ppsa_cutoff if ppsa_rd == 1, c(81) covs(case?)
-rdrobust re_4 ppsa_cutoff , c(81) covs(case?) 
-reg re_4 ppia_facility_2 ppsa_cutoff i.case##i.sample , cl(fid)
-reg re_4 ppia_facility_2 ppsa_cutoff i.case if ppsa_rd == 1 , cl(fid)
+    reg re_4 RD_Estimate ppsa_cutoff i.sample##i.case if ppsa_rd == 1 , cl(fid)
+      est sto localreg
+      
+  // Diff-diff estimates
+  use "${git}/constructed/full-data.dta" ///
+    if case < 7 &  wave >= 1 , clear
+    
+    bys fid: egen min = min(wave)
+      keep if min == 1
+    gen RD_Estimate = -ppia_facility_2 * (wave==2)
+      gen untreated = -ppia_facility_2
+        lab var untreated "Control"
+  
+    areg re_4 RD_Estimate untreated ppsa_cutoff i.wave i.sample##i.case if ppia_facility_1 == 1, cl(fid) a(pid)
+      est sto globalreg2
+      
+  // Print table
+  use "${git}/constructed/full-data.dta" ///
+    if case < 7 &  wave >= 1 , clear
+    
+    gen untreated = ""
+      lab var untreated "Control"
+    gen RD_Estimate = ""
+      lab var RD_Estimate "Loss of Eligibility"
+      lab var ppsa_cutoff "Running Variable"
+  
+  outwrite local localreg global globalreg globalreg2 ///
+    using "${git}/outputs/t-discontinuity.tex" ///
+  , replace stats(N) format(%9.3f) nobold nolab statform(%9.0f %9.4f) ///
+    drop(untreated i.wave#i.case i.sample i.sample#i.case)  ///
+    colnames("Local Robust" "Local Linear" "Global Robust" "Global Linear" "Global Diff-Diff") ///
+    add( ///
+      ("Samples" "All ex. 2b" "All ex. 2b" "All ex. 2b" "All ex. 2b" "All ex. 2b") ///
+      ("Rounds" "3" "3" "3" "3" "2 3") ///
+      ("Provider FE" "No" "No" "No" "No" "Yes" ) ///
+      ("Clustering" "Facility" "Facility" "Facility" "Facility" "Facility") ///
+      ("Case Control" "Yes" "Yes" "Yes" "Yes" "Yes") ///
+      ("Sample-Case Control" "No" "No" "Yes" "Yes" "Yes") ///
+    )
+
+// End of dofile
