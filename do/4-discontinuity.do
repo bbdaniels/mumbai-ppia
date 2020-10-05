@@ -1,11 +1,6 @@
 // Regression discontinuity analysis
 use "${git}/constructed/full-data.dta" ///
   if case < 7 &  wave == 2 , clear
-  
-  gen cutoff = ppsa_cutoff > 81
-    lab var cutoff "Round 3 Eligibility Loss"
-    
-    gen Robust = ppsa_cutoff > 81
 
   // RD estimates ranges
   cap mat drop results
