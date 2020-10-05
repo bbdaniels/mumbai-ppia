@@ -76,14 +76,10 @@ use "${git}/constructed/full-data.dta" ///
       
     graph save "${git}/outputs/f-discontinuity-3.gph" , replace
 
-  gen a = ppsa_cutoff - 81
-  
-  xi: rdbwselect re_4 ppsa_cutoff , c(81) bwselect(msetwo)  covs(i.sample*i.case)
-  
+  gen a = ppsa_cutoff - 81  
   forest reg ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  /// if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
   , t(cutoff) c(a i.cutoff#c.a i.sample##i.case) ///
     cl(fid) b bh graph(title("Full-Sample Linear RD Estimates for Outcomes",span))
     
