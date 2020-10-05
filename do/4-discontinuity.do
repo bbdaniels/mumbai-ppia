@@ -7,120 +7,29 @@ use "${git}/constructed/full-data.dta" ///
     
     gen Robust = ppsa_cutoff > 81
 
-  // Robust estimates
-
+  // RD estimates ranges
   cap mat drop results
-  foreach type in "bwselect(msetwo)" "h(10 10)" "h(15 15)" "h(45 45)" "h(80 80)" {
-    cap mat drop row
-    foreach order in 0 1 2 3 {
-      xi: rdrobust re_4 ppsa_cutoff  , p(`order') c(81) `type' all covs(i.sample*i.case) kernel(uniform) masspoints(off) // vce(cluster fid) 
-      mat row = nullmat(row) , [`e(tau_bc)']
+    foreach type in "bwselect(msetwo)" "h(10 10)" "h(15 15)" "h(45 45)" "h(80 80)" {
+      cap mat drop row
+      foreach order in 0 1 2 3 {
+        qui xi: rdrobust re_4 ppsa_cutoff  ///
+          , p(`order') c(81) `type' all covs(i.sample*i.case) 
+        
+        local N = `e(N_h_l)' + `e(N_h_r)'
+        mat row = nullmat(row) , [`N'  \ `e(tau_cl)' \ `e(se_tau_cl)' \ `e(tau_bc)' \ `e(se_tau_rb)' ]
+      }
+      mat results = nullmat(results) \ row
     }
-    mat results = nullmat(results) \ row
-  }
-  
-  local x1 a i.Robust#c.a
-  local x2 c.a##c.a i.Robust#c.a##c.a
-  local x3 c.a##c.a##c.a i.Robust#c.a##c.a##c.a
-  cap gen a = ppsa_cutoff - 81
-  cap mat drop results2
-  foreach type in 5 10 15 45 80 {
-    cap mat drop row
-    foreach order in 0 1 2 3 {
-      reg re_4 Robust `x`order''  i.sample##i.case if abs(a) < `type' , vce(cluster fid)
-      mat row = nullmat(row) , [_b[Robust]]
-      mat row_s = nullmat(row) , [_b[Robust]]
-    }
-    mat results2 = nullmat(results2) \ row
-  }
-  
-
-  cap mat drop results1
-  foreach type in 5 10 15 45 80 {
-    cap mat drop row
-    foreach order in 1 2 3 {
-      ted re_4 ppsa_cutoff cutoff if ppsa_rd == 1, model(sharp) m(`order') h(`type') k(normal) c(81)
-      mat row = nullmat(row) , [`e(LATE)']
-    }
-    mat results1 = nullmat(results1) \ row
-  } 
-      
-  
-  xi: rdrobust re_4 ppsa_cutoff  , p(1) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
-  xi: rdrobust re_4 ppsa_cutoff  , p(2) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
-  xi: rdrobust re_4 ppsa_cutoff  , p(3) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
-  
-  
-  
-  xi: rdrobust re_4 ppsa_cutoff  , p(0) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
-  xi: rdrobust re_4 ppsa_cutoff  , p(1) h(80 15) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
-  xi: rdrobust re_4 ppsa_cutoff  , p(1) c(81)  bwselect(msetwo) all covs(i.sample*i.case) vce(cluster fid)
-    est sto local 
-  
-  xi: rdrobust re_4 rd  ,  p(3)  h(80 15) all vce(cluster fid) covs(i.sample i.case) 
+    cap mat drop results_STARS
     
-
-    rdrobust re_4 ppsa_cutoff if ppsa_rd == 1, c(81) covs(type? pxh) vce(cluster fid) 
-      est sto local
-      -
-    rdrobust re_4 ppsa_cutoff , c(81) covs(type?) vce(cluster fid) 
-      est sto global
-      
-  // Linear RD
-  use "${git}/constructed/full-data.dta" ///
-    if case < 7 &  wave == 2 , clear
+    local row `""Conventional \beta" "Conventional SE" "Robust \tau" "Robust SE""'
     
-    gen Robust = ppsa_cutoff > 81
-      lab var Robust "Loss of PPIA Eligibility"
-      
-    gen a = ppsa_cutoff - 81
-    xi: rdbwselect re_4 ppsa_cutoff , c(81) bwselect(msetwo)  covs(i.sample*i.case)
-
-    reg re_4 Robust a i.Robust#c.a i.sample##i.case  ///
-      if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
-     , cl(fid)
-      est sto linear
-      
-  // Diff-diff estimates
-  use "${git}/constructed/full-data.dta" ///
-    if case < 7 &  wave >= 1 , clear
-    
-    gen cutoff = ppsa_cutoff > 81
-      lab var cutoff "Round 3 Eligibility Loss"
-    
-    bys fid: egen min = min(wave)
-      keep if min == 1
-    gen RD_Estimate = cutoff * (wave==2)
-      gen untreated = cutoff
-        lab var untreated "Control"
-  
-    areg re_4 RD_Estimate untreated ppsa_cutoff i.wave i.sample##i.case if ppia_facility_1 == 1, cl(fid) a(pid)
-      est sto globalreg2
-      
-  // Print table
-  use "${git}/constructed/full-data.dta" ///
-    if case < 7 &  wave >= 1 , clear
-    
-    gen untreated = ""
-      lab var untreated "Control"
-    gen RD_Estimate = ""
-      lab var RD_Estimate "Loss of Eligibility"
-      lab var ppsa_cutoff "Running Variable"
-    gen cutoff = ""
-      lab var cutoff "Round 3 Eligibility Loss"
-  
-  outwrite local localreg global globalreg globalreg2 ///
-    using "${git}/outputs/t-discontinuity.tex" ///
-  , replace stats(N) format(%9.3f) nobold nolab statform(%9.0f %9.4f) ///
-    drop(untreated i.wave#i.case i.sample i.sample#i.case)  ///
-    colnames("Local Robust" "Local Linear" "Global Robust" "Global Linear" "Global Diff-Diff") ///
-    add( ///
-      ("Samples" "All ex. 2b" "All ex. 2b" "All ex. 2b" "All ex. 2b" "1a 2a 3") ///
-      ("Rounds" "3" "3" "3" "3" "2 3") ///
-      ("Provider FE" "No" "No" "No" "No" "Yes" ) ///
-      ("Clustering" "Facility" "Facility" "Facility" "Facility" "Facility") ///
-      ("Case Control" "Yes" "Yes" "Yes" "Yes" "Yes") ///
-      ("Sample-Case Control" "No" "Yes" "No" "Yes" "Yes") ///
-    )
+    outwrite results ///
+      using "${git}/outputs/t-discontinuity-types.tex"  ///
+    , replace nobold nostars h(5 10 15 20) ///
+      col("Mean" "Linear" "Quadratic" "Cubic") ///
+      par(3 8 13 18 23 5 10 15 20 25) ///
+      row("Selected Bandwidth N" `row' "Bandwidth 10 N"  ///
+       `row' "Bandwidth 15 N"  `row' "Bandwidth 45 N " `row' "Full Sample N" `row' )
 
 // End of dofile
