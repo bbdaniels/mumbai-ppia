@@ -1,4 +1,4 @@
-*!version 8.0.2  04-03-2020
+*!version 8.0.4  2020-08-22
 
 capture program drop rdplot
 program define rdplot, eclass
@@ -184,7 +184,12 @@ program define rdplot, eclass
 		if ("`k'"<="0"){
 			di as error  "{err}{cmd:k()} should be a positive integer"  
 			exit 411
-		}			
+		}
+		
+		if (`n'<20){
+			 di as error "{err}Not enough observations to perform bin calculations"  
+			 exit 2001
+		}
 	}
 
 	*******************************

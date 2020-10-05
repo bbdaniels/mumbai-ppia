@@ -1,4 +1,4 @@
-*!version 8.0.2  04-03-2020
+*!version 8.0.4  2020-08-22
  
 capture program drop rdbwselect
 program define rdbwselect, eclass
@@ -145,7 +145,7 @@ program define rdbwselect, eclass
 			}
 			
 			if (`N'<20){
-			 di as error "{err}Not enough observations to perform calculations"  
+			 di as error "{err}Not enough observations to perform bandwidth calculations"  
 			 exit 2001
 			}
 			

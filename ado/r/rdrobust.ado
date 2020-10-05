@@ -1,4 +1,4 @@
-*!version 8.0.2  04-03-2020
+*!version 8.0.4  2020-08-22
 
 capture program drop rdrobust 
 program define rdrobust, eclass
@@ -184,9 +184,35 @@ program define rdrobust, eclass
 			 exit 125
 			}
 			
+			
 			if (`N'<20){
-			 di as error  "{err}Not enough observations to perform calculations"  
-			 exit 2001
+			 di as error  "{err}Not enough observations to perform bandwidth calculations"  
+			 di as error  "{err}Estimates computed using entire sample"  
+
+			 *exit 2001
+			
+			qui su `x' if `x'<`c'
+			local Nl = r(N)
+			
+			local h = `Nl'
+			local b = `Nl'
+			local h_l = `Nl'
+			local h_r = `Nl'
+			local b_l = `Nl'
+			local b_r = `Nl'	
+			qui su `x' if `x'>=`c'
+			local Nr = r(N)
+			if (`Nr'>`Nl') {
+				local h   = `Nr'
+				local b   = `Nr'
+				local h_l = `Nr'
+				local h_r = `Nr'
+				local b_l = `Nr'
+				local b_r = `Nr'					
+			}
+		
+			local bwselect= "Manual"
+			
 			}
 			
 			if ("`kernel'"~="uni" & "`kernel'"~="uniform" & "`kernel'"~="tri" & "`kernel'"~="triangular" & "`kernel'"~="epa" & "`kernel'"~="epanechnikov" & "`kernel'"~="" ){
@@ -539,9 +565,9 @@ masspoints_found = 0
 		N_h_l = length(ind_h_l);	N_b_l = length(ind_b_l)
 		N_h_r = length(ind_h_r);	N_b_r = length(ind_b_r)
 		
-		if (N_h_l<5 | N_h_r<5 | N_b_l<5 | N_b_r<5){
-		 display("{err}Not enough observations to perform calculations")
-		 exit(1)
+		if (N_h_l<10 | N_h_r<10 | N_b_l<10 | N_b_r<10){
+		 display("{err}Estimates might be unreliable due to low number of effective observations.")
+		 *exit(1)
 		}
 		
 		ind_l = ind_b_l; ind_r = ind_b_r
@@ -929,7 +955,7 @@ masspoints_found = 0
 	restore
 
 	ereturn clear
-	cap ereturn post b V
+	cap ereturn post b V, esample(`touse')
 	ereturn scalar N = N
 	ereturn scalar N_l = N_l
 	ereturn scalar N_r = N_r
