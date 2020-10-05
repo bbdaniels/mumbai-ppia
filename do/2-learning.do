@@ -90,7 +90,7 @@ use "${git}/constructed/full-data.dta" , clear
   lab var treat2 "PPIA In Round 2"
   
   outwrite global did did1 did2 global2 global3 ///
-    using "${git}/outputs/t-learning-global.tex" ///
+    using "${git}/outputs/t-learning.tex" ///
   , replace drop(i.wave#i.case i.sample i.sample#i.case) format(%9.3f) stats(N r2) ///
     nobold nolab statform(%9.0f %9.4f) ///
     colnames("Pooled" "Diff-Diff" "Sample 1a (Diff-Diff)" "Sample 1a (All)" "Restricted" "Separate") ///
