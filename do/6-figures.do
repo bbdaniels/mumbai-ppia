@@ -41,29 +41,52 @@ use "${git}/constructed/full-data.dta" ///
    
   gen cutoff = ppsa_cutoff > 81
     lab var cutoff "Round 3 Eligibility Loss"
+    
+  xi: rdbwselect re_4 ppsa_cutoff , c(81) bwselect(msetwo)  covs(i.sample*i.case)
    
-  rdplot re_4 ppsa_cutoff if ppsa_rd == 1 ///
-    , c(81) p(1) ci(95) ///
-      graph_options(title("GeneXpert in Local Sample") ylab(\${pct}) xtit("RD Running Variable")) 
+  rdplot re_4 ppsa_cutoff ///
+    if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
+    , c(81) p(0) ci(95) h(`e(h_msetwo_l)' `e(h_msetwo_r)') ///
+      graph_options(title("GeneXpert Mean in Selected Bandwidth") ///
+        ylab(\${pct}) xtit("RD Running Variable")) 
     
     graph save "${git}/outputs/f-discontinuity-1.gph" , replace
     
+  xi: rdbwselect re_4 ppsa_cutoff , c(81) bwselect(msetwo)  covs(i.sample*i.case)
+  
   rdplot re_4 ppsa_cutoff ///
-    , c(81) p(1) ci(95) ///
-      graph_options(title("GeneXpert in Global Sample") ylab(\${pct}) xtit("RD Running Variable")) 
+    if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
+    , c(81) p(1) ci(95) h(`e(h_msetwo_l)' `e(h_msetwo_r)') ///
+      graph_options(title("GeneXpert Mean and Slope in Selected Bandwidth") ///
+        ylab(\${pct}) xtit("RD Running Variable")) 
     
     graph save "${git}/outputs/f-discontinuity-2.gph" , replace
 
-  scatter ppia_facility_2 ppsa_cutoff ///
-    , xline(81) ylab(0 "No" 1 "Yes") mc(black) ///
-      title("PPIA Enrollment in Round 3 by Rank")
+  egen ftag = tag(fid)
+  xi: rdbwselect re_4 ppsa_cutoff , c(81) bwselect(msetwo)  covs(i.sample*i.case)
+  tw ///
+    (scatter ppia_facility_2 ppsa_cutoff if ftag, mc(black) jitter(5)) ///
+    (lpolyci re_4 ppsa_cutoff if cutoff == 0 , lp(solid) lc(black) lw(thick) alwidth(none) ) ///
+    (lpolyci re_4 ppsa_cutoff if cutoff == 1 , lp(solid) lc(black) lw(thick) alwidth(none) ) ///
+    (lfit re_4 ppsa_cutoff if cutoff == 0 , lp(dash) lc(black) lw(thin) alwidth(none) ) ///
+    (lfit re_4 ppsa_cutoff if cutoff == 1 , lp(dash) lc(black) lw(thin) alwidth(none) ) ///
+    (lfit ppia_facility_2 ppsa_cutoff if cutoff == 0 , lp(dash) lc(red) ) ///
+    (lfit ppia_facility_2 ppsa_cutoff if cutoff == 1 , lp(dash) lc(red) ) ///
+    , xline(81 , lc(red)) xline(`=81-`e(h_msetwo_l)'' `=81+`e(h_msetwo_r)'' , lc(black)) ylab(0 "No" 1 "Yes")  ///
+      title("Round 3 Enrollment and GeneXpert use by Rank") xtit("RD Running Variable, Cutoff, and Bandwidth") ///
+      legend(on ring(0) c(1) pos(7) order(8 "Enrollment" 3 "GeneXpert"))
       
     graph save "${git}/outputs/f-discontinuity-3.gph" , replace
 
+  gen a = ppsa_cutoff - 81
+  
+  xi: rdbwselect re_4 ppsa_cutoff , c(81) bwselect(msetwo)  covs(i.sample*i.case)
+  
   forest reg ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  , t(cutoff) c(ppsa_cutoff i.sample##i.case) ///
+  if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
+  , t(cutoff) c(a i.cutoff#c.a i.sample##i.case) ///
     cl(fid) b bh graph(title("Linear RD Estimates for Outcomes",span))
     
     graph save "${git}/outputs/f-discontinuity-4.gph" , replace
@@ -71,8 +94,8 @@ use "${git}/constructed/full-data.dta" ///
   graph combine ///
     "${git}/outputs/f-discontinuity-3.gph" ///
     "${git}/outputs/f-discontinuity-2.gph" ///
-    "${git}/outputs/f-discontinuity-4.gph" ///
     "${git}/outputs/f-discontinuity-1.gph" ///
+    "${git}/outputs/f-discontinuity-4.gph" ///
     , altshrink
   
   graph export "${git}/outputs/f-discontinuity.eps" , replace

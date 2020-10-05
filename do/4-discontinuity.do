@@ -4,8 +4,54 @@ use "${git}/constructed/full-data.dta" ///
   
   gen cutoff = ppsa_cutoff > 81
     lab var cutoff "Round 3 Eligibility Loss"
+    
+    gen Robust = ppsa_cutoff > 81
 
   // Robust estimates
+
+  cap mat drop results
+  foreach type in "bwselect(msetwo)" "h(10 10)" "h(15 15)" "h(45 45)" "h(80 80)" {
+    cap mat drop row
+    foreach order in 0 1 2 3 {
+      xi: rdrobust re_4 ppsa_cutoff  , p(`order') c(81) `type' all covs(i.sample*i.case) kernel(uniform) masspoints(off) // vce(cluster fid) 
+      mat row = nullmat(row) , [`e(tau_bc)']
+    }
+    mat results = nullmat(results) \ row
+  }
+  
+  local x1 a i.Robust#c.a
+  local x2 c.a##c.a i.Robust#c.a##c.a
+  local x3 c.a##c.a##c.a i.Robust#c.a##c.a##c.a
+  cap gen a = ppsa_cutoff - 81
+  cap mat drop results2
+  foreach type in 5 10 15 45 80 {
+    cap mat drop row
+    foreach order in 0 1 2 3 {
+      reg re_4 Robust `x`order''  i.sample##i.case if abs(a) < `type' , vce(cluster fid)
+      mat row = nullmat(row) , [_b[Robust]]
+      mat row_s = nullmat(row) , [_b[Robust]]
+    }
+    mat results2 = nullmat(results2) \ row
+  }
+  
+
+  cap mat drop results1
+  foreach type in 5 10 15 45 80 {
+    cap mat drop row
+    foreach order in 1 2 3 {
+      ted re_4 ppsa_cutoff cutoff if ppsa_rd == 1, model(sharp) m(`order') h(`type') k(normal) c(81)
+      mat row = nullmat(row) , [`e(LATE)']
+    }
+    mat results1 = nullmat(results1) \ row
+  } 
+      
+  
+  xi: rdrobust re_4 ppsa_cutoff  , p(1) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
+  xi: rdrobust re_4 ppsa_cutoff  , p(2) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
+  xi: rdrobust re_4 ppsa_cutoff  , p(3) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
+  
+  
+  
   xi: rdrobust re_4 ppsa_cutoff  , p(0) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
   xi: rdrobust re_4 ppsa_cutoff  , p(1) h(80 15) c(81)  bwselect(msetwo) all covs(i.sample*i.case)
   xi: rdrobust re_4 ppsa_cutoff  , p(1) c(81)  bwselect(msetwo) all covs(i.sample*i.case) vce(cluster fid)
