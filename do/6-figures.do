@@ -45,7 +45,6 @@ use "${git}/constructed/full-data.dta" ///
   xi: rdbwselect re_4 ppsa_cutoff , c(81) bwselect(msetwo)  covs(i.sample*i.case)
    
   rdplot re_4 ppsa_cutoff ///
-    if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
     , c(81) p(0) ci(95) h(`e(h_msetwo_l)' `e(h_msetwo_r)') ///
       graph_options(title("GeneXpert Mean in Selected Bandwidth") ///
         ylab(\${pct}) xtit("RD Running Variable")) 
@@ -55,7 +54,6 @@ use "${git}/constructed/full-data.dta" ///
   xi: rdbwselect re_4 ppsa_cutoff , c(81) bwselect(msetwo)  covs(i.sample*i.case)
   
   rdplot re_4 ppsa_cutoff ///
-    if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
     , c(81) p(1) ci(95) h(`e(h_msetwo_l)' `e(h_msetwo_r)') ///
       graph_options(title("GeneXpert Mean and Slope in Selected Bandwidth") ///
         ylab(\${pct}) xtit("RD Running Variable")) 
@@ -85,17 +83,17 @@ use "${git}/constructed/full-data.dta" ///
   forest reg ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
+  /// if ppsa_cutoff > (81-`e(h_msetwo_l)') & ppsa_cutoff < (81+`e(h_msetwo_r)') ///
   , t(cutoff) c(a i.cutoff#c.a i.sample##i.case) ///
-    cl(fid) b bh graph(title("Linear RD Estimates for Outcomes",span))
+    cl(fid) b bh graph(title("Full-Sample Linear RD Estimates for Outcomes",span))
     
     graph save "${git}/outputs/f-discontinuity-4.gph" , replace
   
   graph combine ///
     "${git}/outputs/f-discontinuity-3.gph" ///
     "${git}/outputs/f-discontinuity-2.gph" ///
-    "${git}/outputs/f-discontinuity-1.gph" ///
     "${git}/outputs/f-discontinuity-4.gph" ///
+    "${git}/outputs/f-discontinuity-1.gph" ///
     , altshrink
   
   graph export "${git}/outputs/f-discontinuity.eps" , replace
