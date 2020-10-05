@@ -1,29 +1,30 @@
-\begin{tabular}{@{\extracolsep{5pt}}lrrrrrrrrrrrrrrr}
+\begin{tabular}{@{\extracolsep{5pt}}lccccccccccccc}
 \toprule
-& \multicolumn{1}{p{0.13\linewidth}}{\centering{(1)}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{(2)}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{(3)}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{(4)}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{(5)}} \\
-& \multicolumn{1}{p{0.13\linewidth}}{\centering{Local Robust}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Local Linear}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Global Robust}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Global Linear}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Global Diff$-$Diff}} \\
+& \multicolumn{1}{p{0.13\linewidth}}{\centering{(1)}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{(2)}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{(3)}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{(4)}} \\
+& \multicolumn{1}{p{0.13\linewidth}}{\centering{Mean}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Linear}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Quadratic}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Cubic}} \\
 \hline
-Loss of Eligibility & $-$0.242\phantom{\phantom{)}***} & $-$0.087\phantom{\phantom{)}***} & $-$0.139\phantom{\phantom{)}***} & $-$0.058\phantom{\phantom{)}***} & $-$0.144\phantom{\phantom{)}***} \\
-& (0.168)\phantom{***} & (0.113)\phantom{***} & (0.165)\phantom{***} & (0.083)\phantom{***} & (0.100)\phantom{***} \\
-Running Variable & \phantom{***} & 0.006\phantom{\phantom{)}***} & \phantom{***} & $-$0.003\phantom{)}*\phantom{**} & 0.006\phantom{\phantom{)}***} \\
-& \phantom{***} & (0.006)\phantom{***} & \phantom{***} & (0.002)\phantom{***} & (0.004)\phantom{***} \\
-SP Case 2 & \phantom{***} & 0.355\phantom{)}**\phantom{*} & \phantom{***} & 0.539\phantom{)}*** & 0.565\phantom{)}*** \\
-& \phantom{***} & (0.147)\phantom{***} & \phantom{***} & (0.073)\phantom{***} & (0.055)\phantom{***} \\
-SP Case 3 & \phantom{***} & 0.407\phantom{)}*** & \phantom{***} & 0.428\phantom{)}*** & 0.414\phantom{)}*** \\
-& \phantom{***} & (0.099)\phantom{***} & \phantom{***} & (0.073)\phantom{***} & (0.074)\phantom{***} \\
-SP Case 4 & \phantom{***} & 0.048\phantom{\phantom{)}***} & \phantom{***} & 0.233\phantom{)}*** & 0.289\phantom{)}*** \\
-& \phantom{***} & (0.106)\phantom{***} & \phantom{***} & (0.061)\phantom{***} & (0.055)\phantom{***} \\
-Round 3 & \phantom{***} & \phantom{***} & \phantom{***} & \phantom{***} & $-$0.118\phantom{)}**\phantom{*} \\
-& \phantom{***} & \phantom{***} & \phantom{***} & \phantom{***} & (0.054)\phantom{***} \\
-Constant & \phantom{***} & $-$0.325\phantom{\phantom{)}***} & \phantom{***} & 0.350\phantom{\phantom{)}***} & 0.084\phantom{\phantom{)}***} \\
-& \phantom{***} & (0.453)\phantom{***} & \phantom{***} & (0.087)\phantom{***} & (0.199)\phantom{***} \\
+Experimental Bandwidth \\ Number of Observations & 331.00 & 331.00 & 331.00 & 331.00 \\
+Conventional \beta & 0.00 & $-$0.07 & $-$0.10 & $-$0.15 \\
+Conventional SE & (0.06) & (0.10) & (0.14) & (0.19) \\
+Robust \tau & $-$0.06 & $-$0.07 & $-$0.15 & $-$0.42 \\
+Robust SE & (0.10) & (0.13) & (0.19) & (0.19) \\
 \hline
-N & 331\phantom{***} & 331\phantom{***} & 575\phantom{***} & 575\phantom{***} & 561\phantom{***} \\
-{Samples}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{All ex. 2b}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{All ex. 2b}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{All ex. 2b}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{All ex. 2b}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{1a 2a 3}} \\
-{Rounds}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{3}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{3}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{3}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{3}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{2 3}} \\
-{Provider FE}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{No}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{No}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{No}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{No}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} \\
-{Clustering}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Facility}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Facility}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Facility}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Facility}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Facility}} \\
-{Case Control}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} \\
-{Sample-Case Control}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{No}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{No}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} & \multicolumn{1}{p{0.13\linewidth}}{\centering{Yes}} \\
+Full Sample \\ Number of Observations & 575.00 & 575.00 & 575.00 & 575.00 \\
+Conventional \beta & $-$0.13 & $-$0.07 & $-$0.21 & $-$0.18 \\
+Conventional SE & (0.05) & (0.08) & (0.10) & (0.13) \\
+Robust \tau & $-$0.10 & $-$0.20 & $-$0.19 & $-$0.37 \\
+Robust SE & (0.08) & (0.10) & (0.13) & (0.15) \\
+\hline
+MSE-Optimal Bandwidths \\ Number of Observations & 198.00 & 274.00 & 350.00 & 373.00 \\
+Conventional \beta & $-$0.02 & $-$0.15 & $-$0.28 & $-$0.21 \\
+Conventional SE & (0.07) & (0.09) & (0.11) & (0.16) \\
+Robust \tau & $-$0.06 & $-$0.22 & $-$0.35 & $-$0.28 \\
+Robust SE & (0.09) & (0.11) & (0.12) & (0.18) \\
+\hline
+CER-Optimal Bandwidths \\ Number of Observations & 198.00 & 239.00 & 277.00 & 287.00 \\
+Conventional \beta & $-$0.02 & $-$0.16 & $-$0.28 & $-$0.24 \\
+Conventional SE & (0.07) & (0.10) & (0.12) & (0.17) \\
+Robust \tau & $-$0.06 & $-$0.21 & $-$0.31 & $-$0.26 \\
+Robust SE & (0.09) & (0.11) & (0.12) & (0.18) \\
 \hline
 \end{tabular}
