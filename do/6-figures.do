@@ -4,16 +4,17 @@ use "${git}/constructed/full-data.dta" ///
 
   // Define treatment effect for regressions
   gen treat = pxh == 1 & wave > 0
-    lab var treat "PPIA After Round 1"
+    lab var treat "PPIA Provider After Round 1"
 
   // Generate figure
   forest areg ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  , t(treat) c(pxh i.wave i.sample##i.case) ///
-    a(fid) cl(pid) b bh
+  , t(treat) c(pxh i.wave i.sample##i.case##i.pxh) ///
+    a(fid) cl(pid) b bh ///
+    graph(xlab(-.2 "-20p.p." -.1 "-10p.p." 0 "Zero" .1 "+10p.p." .2 "+20p.p."))
     
-    graph export "${git}/outputs/f-learning-global.eps" , replace
+    graph export "${git}/outputs/f-learning.eps" , replace
     
 // Convenience effect - global 
 use "${git}/constructed/full-data.dta" ///
