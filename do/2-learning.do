@@ -71,10 +71,10 @@ use "${git}/constructed/full-data.dta" ///
 use "${git}/constructed/full-data.dta" ///
   if case < 7 , clear
 
-  gen treat = pxh == 1 & wave > 0
+  gen treat = pxh == 1 & wave == 1
     lab var treat "PPIA After Round 1"
   gen treat2 = pxh == 1 & wave == 2
-    lab var treat "PPIA In Round 2"
+    lab var treat "PPIA After Round 2"
       
   areg re_4 treat treat2 pxh ///
     i.wave i.sample##i.case##i.pxh ///
@@ -87,7 +87,7 @@ use "${git}/constructed/full-data.dta" , clear
   gen treat = ""
   gen treat2 = ""
   lab var treat "PPIA After Round 1"
-  lab var treat2 "PPIA In Round 2"
+  lab var treat2 "PPIA After Round 2"
   
   outwrite global sample1a did did1a restricted separate ///
     using "${git}/outputs/t-learning.tex" ///
