@@ -14,6 +14,27 @@ use "${git}/constructed/full-data.dta" ///
     a(fid) cl(pid) b bh ///
     graph(xlab(-.2 "-20p.p." -.1 "-10p.p." 0 "Zero" .1 "+10p.p." .2 "+20p.p."))
     
+    graph save "${git}/outputs/f-learning-1.gph" , replace
+    
+  // Define treatment effect for regressions
+  replace treat = pxh == 1 & wave > 1
+    lab var treat "PPIA Provider After Round 2"
+    
+  // Generate figure
+  forest areg ///
+    (dr_1 dr_4 re_1 re_3 re_4) ///
+    (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
+  , t(treat) c(pxh i.wave i.sample##i.case##i.pxh) ///
+    a(fid) cl(pid) b bh ///
+    graph(xlab(-.2 "-20p.p." -.1 "-10p.p." 0 "Zero" .1 "+10p.p." .2 "+20p.p."))
+    
+    graph save "${git}/outputs/f-learning-2.gph" , replace
+    
+  graph combine ///
+    "${git}/outputs/f-learning-1.gph" ///
+    "${git}/outputs/f-learning-2.gph" ///
+  , c(1) xcom altshrink ysize(6)
+    
     graph export "${git}/outputs/f-learning.eps" , replace
     
 // Convenience effect - global 
@@ -21,20 +42,44 @@ use "${git}/constructed/full-data.dta" ///
   if case < 7 , clear
 
   // Define treatment effect for regressions
-  gen ppia = 0
-    lab var ppia "PPIA Facility"
-  forvalues i = 0/2 {
-    replace ppia = 1 if wave == `i' & ppia_facility_`i' == 1
-  }
+  gen treat = ///
+    ppia_facility_0 == 1 & wave == 0 ///
+  | ppia_facility_1 == 1 & wave == 1 
+  
+  gen treat2 = ppia_facility_2 == 1 & wave == 2
+    lab var treat2 "PPIA Round 3"
+    
+  egen check = group(pid fid)
 
   // Generate figure
+  lab var treat "PPIA Facility for PPIA Provider"
   forest areg ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
-  , t(ppia) c(i.wave i.sample##i.case) ///
-    a(pid) cl(fid) b bh
+  if pxh == 1 ///
+  , t(treat) c(treat2 i.case i.wave) ///
+    a(check)  b bh ///
+    graph(xlab(-.2 "-20p.p." -.1 "-10p.p." 0 "Zero" .1 "+10p.p." .2 "+20p.p."))
     
-    graph export "${git}/outputs/f-convenience-global.eps" , replace
+    graph save "${git}/outputs/f-convenience-1.gph" , replace
+    
+  lab var treat "PPIA Facility for Other Provider"
+  forest areg ///
+    (dr_1 dr_4 re_1 re_3 re_4) ///
+    (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
+  if pxh != 1 ///
+  , t(treat) c(treat2 i.case i.wave) ///
+    a(check)  b bh ///
+    graph(xlab(-.2 "-20p.p." -.1 "-10p.p." 0 "Zero" .1 "+10p.p." .2 "+20p.p."))
+    
+    graph save "${git}/outputs/f-convenience-2.gph" , replace
+    
+  graph combine ///
+    "${git}/outputs/f-convenience-1.gph" ///
+    "${git}/outputs/f-convenience-2.gph" ///
+  , c(1) xcom altshrink ysize(6)
+    
+  graph export "${git}/outputs/f-convenience.eps" , replace
 
 // RD Analysis Figure
   
