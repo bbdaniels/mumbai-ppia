@@ -49,7 +49,7 @@ use "${git}/constructed/full-data.dta" ///
   gen treat2 = ppia_facility_2 == 1 & wave == 2
     lab var treat2 "PPIA Round 3"
     
-  egen check = group(pid fid)
+  egen check = group(pid fid case)
 
   // Generate figure
   lab var treat "PPIA Facility for PPIA Provider"
@@ -57,7 +57,7 @@ use "${git}/constructed/full-data.dta" ///
     (dr_1 dr_4 re_1 re_3 re_4) ///
     (med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9) ///
   if pxh == 1 ///
-  , t(treat) c(treat2 i.case i.wave) ///
+  , t(treat) c(treat2 i.wave) ///
     a(check)  b bh ///
     graph(xlab(-.2 "-20p.p." -.1 "-10p.p." 0 "Zero" .1 "+10p.p." .2 "+20p.p."))
     
