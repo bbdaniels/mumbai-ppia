@@ -5,14 +5,20 @@ global box "/users/bbdaniels/Box/Qutub/MUMBAI/"
 
 // Install adofiles and other support
 
+  // Ensure no other adofiles are available
+  while _rc == 0 {
+    cap qui adopath - 2
+  }
+    
+  // Set install directory and get user-written packages
   sysdir set PLUS "${git}/ado/"
-
-  ssc install iefieldkit , replace
-  ssc install rdrobust, replace
-  net install rdrobust, from(https://raw.githubusercontent.com/rdpackages/rdrobust/master/stata) replace
-  net install forest, from(https://github.com/bbdaniels/stata/raw/master/) replace
-  net install outwrite, from(https://github.com/bbdaniels/stata/raw/master/) replace
-  net install specc, from(https://github.com/bbdaniels/stata/raw/master/) replace
+    ssc install iefieldkit , replace
+    net from "https://raw.githubusercontent.com/rdpackages/rdrobust/master/stata"
+      net install rdrobust , replace
+    net from "https://github.com/bbdaniels/stata/raw/master/"
+      net install forest , replace
+      net install outwrite , replace 
+      net install specc , replace 
 
 // Get data from Box (finalize before publication)
 
