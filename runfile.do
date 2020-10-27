@@ -24,11 +24,11 @@ global box "/users/bbdaniels/Box/Qutub/MUMBAI/"
 
   foreach file in ///
     master-facilities master-providers master-interactions ///
-    wave-0 wave-1 wave-2 {
+    wave-0 wave-1 wave-2 lab-tests {
       copy "${box}/data/deidentified/`file'.dta" ///
         "${git}/data/`file'.dta" , replace
   }
-  
+  -
   // Get metadata
   copy "${box}/data/metadata/deidentified/all.xlsx" ///
     "${git}/data/append-metadata.xlsx" , replace
