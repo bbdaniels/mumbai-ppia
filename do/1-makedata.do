@@ -1,4 +1,9 @@
-// Create full appended dataset
+// Set up lab test data
+use "${git}/data/lab-tests.dta" , clear
+  lab var mtb "TB Positive"
+  save "${git}/constructed/lab-tests.dta" , replace
+
+// Create full appended SP dataset
 
   iecodebook append ///
     "${git}/data/wave-0.dta" ///

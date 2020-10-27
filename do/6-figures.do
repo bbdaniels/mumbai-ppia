@@ -1,3 +1,37 @@
+// PPIA lab testing regime  
+use "${git}/constructed/lab-tests.dta" if sputum == 1 & date != . , clear
+
+  tw ///
+    (histogram date ///
+      , freq yaxis(2) fc(gs14) ls(none) start(19997) width(7) barwidth(6) ) ///
+    (histogram date if voucher_use == 0 ///
+      , freq yaxis(2) fc(gs10) ls(none) start(19997) width(7) barwidth(6) ) ///
+    /// Positivity
+    (lpoly mtb date if voucher_use == 0 , lc(black) lw(thick) lp(solid)) ///
+    (lpoly mtb date if voucher_use == 1 , lc(red) lw(thick) lp(solid)) ///
+    (lpoly rifres date if voucher_use == 0 , lc(black) lw(thick) lp(dash)) ///
+    (lpoly rifres date if voucher_use == 1 , lc(red) lw(thick) lp(dash)) ///
+    /// Data collection
+    (function 0.8 , lc(black) range(20193 20321)) /// 
+      (scatteri 0.8 20193 "Round 1" ,  mlabcolor(black) m(none) mlabpos(1)) /// 
+    (function 0.8 , lc(black) range(20814 20877)) /// 
+      (scatteri 0.8 20814 "Round 2" ,  mlabcolor(black) m(none) mlabpos(1)) /// 
+    /// (function 0.8 , lc(black) range(21462 21557)) /// 
+      /// (scatteri 0.8 21462 "Round 3" ,  mlabcolor(black) m(none) mlabpos(1)) /// 
+  , legend(on size(vsmall) pos(12) ///
+      order( ///
+        2 "TB Tests Done, non-PPIA" ///
+        1 "TB Tests Done, PPIA" ///
+        3 "TB Positive Rate, non-PPIA" ///
+        4 "TB Positive Rate, PPIA" ///
+        5 "Rifampicin Resistance, non-PPIA" ///
+        6 "Rifampicin Resistance, PPIA" )) ///
+    ${hist_opts} xoverhang ///
+    ylab(${pct}) ytit("Weekly Tests (Histogram)", axis(2)) ///
+    xtit(" ") xlab(,labsize(small) format(%tdMon_CCYY))
+    
+    graph export "${git}/outputs/f-design.eps" , replace
+
 // Learning effect - global
 use "${git}/constructed/full-data.dta" ///
   if case < 7 , clear
