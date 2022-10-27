@@ -1,5 +1,5 @@
 {smcl}
-{* *!version 8.0.4  2020-08-22}{...}
+{* *!version 9.0.5  2022-09-29}{...}
 {viewerjumpto "Syntax" "rdrobust##syntax"}{...}
 {viewerjumpto "Description" "rdrobust##description"}{...}
 {viewerjumpto "Options" "rdrobust##options"}{...}
@@ -7,7 +7,6 @@
 {viewerjumpto "Stored results" "rdrobust##stored_results"}{...}
 {viewerjumpto "References" "rdrobust##references"}{...}
 {viewerjumpto "Authors" "rdrobust##authors"}{...}
-
 
 {title:Title}
 
@@ -105,7 +104,7 @@ Default is {cmd:rho(1)} if {it:h} is specified but {it:b} is not.{p_end}
 
 {p 4 8}{cmd:covs(}{it:covars}{cmd:)} specifies additional covariates to be used for estimation and inference.{p_end}
 
-{p 4 8}{cmd:covs_drop(}{it:covsdropoption}{cmd:)} specifies options to assess collinearity in covariates to be used for estimation and inference. Option {opt on} drops collinear additional covariates (default choice). Option {opt off} only checks collinear additional covariates but does not drop them.{p_end}
+{p 4 8}{cmd:covs_drop(}{it:covsdropoption}{cmd:)} assess collinearity in additional covariates used for estimation and inference. Options {opt pinv} (default choice) and {opt invsym} drops collinear additional covariates, differing only in the type of inverse function used. Option {opt off} omits the check for collinear additional covariates.{p_end}
 
 {p 4 8}{cmd:kernel(}{it:kernelfn}{cmd:)} specifies the kernel function used to construct the local-polynomial estimator(s). Options are: {opt tri:angular}, {opt epa:nechnikov}, and {opt uni:form}.
 Default is {cmd:kernel(triangular)}.{p_end}
@@ -247,6 +246,7 @@ Default is {cmd:level(95)}.{p_end}
 {p2col 5 20 24 2: Matrices}{p_end}
 {synopt:{cmd:e(beta_p_r)}}conventional p-order local-polynomial estimates to the right of the cutoff{p_end}
 {synopt:{cmd:e(beta_p_l)}}conventional p-order local-polynomial estimates to the left of the cutoff{p_end}
+{synopt:{cmd:e(beta_covs)}}coefficients of the additional covariates, only returned when {cmd:covs()} are used{p_end}
 {synopt:{cmd:e(V_cl_r)}}conventional variance-covariance matrix to the right of the cutoff{p_end}
 {synopt:{cmd:e(V_cl_l)}}conventional variance-covariance matrix to the left of the cutoff{p_end}
 {synopt:{cmd:e(V_rb_r)}}robust variance-covariance matrix to the right of the cutoff{p_end}

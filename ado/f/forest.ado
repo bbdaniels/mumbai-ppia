@@ -13,6 +13,7 @@ syntax anything /// syntax – forest reg d1 d2 d3
     [Controls(string asis)] /// Any variable list of controls
     [or] /// odds-ratios: passes to regression command and orders log scale on chart
     [d]  /// cohen's d: standardizes all dependent variables before regression
+		[mde] /// plot minimum detectable effects (based on Bonferroni)
     [sort(string asis)] /// Allow ordering of results by size: global, family
     [Bonferroni] [bh] /// FWER corrections
     [GRAPHopts(string asis)] /// Open-ended options for tw command
@@ -161,6 +162,14 @@ svmat results , n(col)
     local thisLabel = label[`i']
     local theLabels = `"`theLabels' `i' "`thisLabel'""'
   }
+  
+	// Create MDEs
+	if "`mde'" != "" {
+	  gen mdeL = se * (crit + -(invt(df,.2)))
+	  gen mdeU =  se * (-crit -(invt(df,.8)))
+		local mdePlot "(scatter pos mdeL , m(|) mc(black))(scatter pos mdeU, m(|) mc(black) )"
+		local note `"`note' "Black markers indicate 80% power minimum detectable effects.""'
+	}
 
   // Logarithmic outputs for odds ratios, otherwise linear effects
 	if "`or'" == "or" {
@@ -184,7 +193,7 @@ svmat results , n(col)
 		(scatter y2 x2 , m(none)) ///
 		(rspike  ll ul pos , horizontal lc(gs12) lw(thin)) ///
 		(scatter pos b if bh_sig != "*", ms(O) mlc(black) mfc(white) msize(medlarge) mlw(thin) ) ///
-    `bhplot' ///
+    `bhplot' `mdePlot' ///
 		, `log' yscale(reverse) ///
       ylab(`theLabels',angle(0) notick nogrid) ytit(" ") legend(off) ///
       note(`note' , span) `graphopts'

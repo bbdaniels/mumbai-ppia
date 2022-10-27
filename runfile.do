@@ -1,7 +1,7 @@
 // Runfile for Mumbai analysis
 
 global git "/users/bbdaniels/github/mumbai-ppia/"
-global box "/users/bbdaniels/Box/Qutub/MUMBAI/"
+global box "/Users/bbdaniels/Library/CloudStorage/Box-Box/Qutub/MUMBAI"
 
 // Install adofiles and other support
 
@@ -9,16 +9,16 @@ global box "/users/bbdaniels/Box/Qutub/MUMBAI/"
   while _rc == 0 {
     cap qui adopath - 2
   }
-    
+
   // Set install directory and get user-written packages
   sysdir set PLUS "${git}/ado/"
     ssc install iefieldkit , replace
     net from "https://raw.githubusercontent.com/rdpackages/rdrobust/master/stata"
       net install rdrobust , replace
-    net from "https://github.com/bbdaniels/stata/raw/master/"
+    net from "https://github.com/bbdaniels/stata/raw/main/"
       net install forest , replace
-      net install outwrite , replace 
-      net install specc , replace 
+      net install outwrite , replace
+      net install specc , replace
 
 // Get data from Box (finalize before publication)
 
@@ -28,7 +28,7 @@ global box "/users/bbdaniels/Box/Qutub/MUMBAI/"
       copy "${box}/data/deidentified/`file'.dta" ///
         "${git}/data/`file'.dta" , replace
   }
-  -
+
   // Get metadata
   copy "${box}/data/metadata/deidentified/all.xlsx" ///
     "${git}/data/append-metadata.xlsx" , replace

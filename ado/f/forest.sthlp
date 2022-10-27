@@ -22,7 +22,7 @@ will return incorrect values.
 {p 2 3}{cmd: forest} {it:estimator} ({it:depvar family}) [({it:depvar family})] [...]
 {break} [{help weight}] [{help if}] [{help in}]{p_end}
 {p 2 3}, {opth t:reatment(varname)} [{opth c:ontrols(varlist)}] [{it:estimation_opts}]
-{break} [{bf:or|d}] [{opt b:onferroni}|{opt bh}] [{opt crit:ical(value)}]
+{break} [{bf:or|d}] [{opt b:onferroni}|{opt bh}] [{opt mde}] [{opt crit:ical(value)}]
 {break} [{bf:sort}({it:local}|{it:global})] [{opth graph:opts(twoway_options)}] {p_end}
 
 
@@ -45,14 +45,18 @@ such as {bf:controls(L.@)} to control for lagged values after {help xtset}.{p_en
 {break}
 {synopt:{opt crit:ical()}}Specify critical p-value for highlighting significant results (default = 0.05).{p_end}
 {break}
-{synopt:{bf:or|d}}Request effect sizes as odds ratios (by exponentiating regression coefficients where possible)
+{synopt:{opt or|d}}Request effect sizes as odds ratios (by exponentiating regression coefficients where possible)
 or in terms of Cohen's {it:d} (by standardizing the dependent variables). Choose only one.{p_end}
 {break}
-{synopt:* {opt b:onferroni}}Request confidence intervals calculated with Bonferroni correction for simultaneous comparisons.
+{synopt:{opt b:onferroni}}Request confidence intervals calculated with Bonferroni correction for simultaneous comparisons.
 This is calculated by adjusting the significance level to (100-5/({it:number of regressions})) per family.{p_end}
 {break}
-{synopt:* {opt bh}}Request Benjamini-Hochberg significance for simultaneous comparisons.
+{synopt:{opt bh}}Request Benjamini-Hochberg significance for simultaneous comparisons.
 This is calculated by comparing the raw p-value against ({it:rank}/({it:number of regressions}))*0.05 per family.{p_end}
+{break}
+{synopt:{opt mde}}Request illustration of minimum detectable effects at 80% power,
+calculated as the critical value plus the 20th percentile of the appropriate T-distribution.
+Uses Bonferroni critical values if {opt bonferroni} is specified.{p_end}
 {break}
 {p 4 2}{bf:Display Options}{p_end}{break}{break}
 {synopt:{opt sort(type)}}Request that results be sorted from the smallest result to the largest.
